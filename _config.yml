@@ -1,30 +1,31 @@
-title: Blog # The title of the blog
+title: . # The title of the blog
 author: Kyuhyun Sung # Your name
 email: dmp100@naver.com # your email shown in the footer
 url: https://dmp100.github.io # this is your site's root address.
 description: > # this means to ignore newlines until "show_excerpts:"
-  A clean and minimalist theme for Jekyll.
+  Making My Own Things
 favicon: "./favicon.ico" # set the favicon of the site
 show_excerpts: false # set to true to show excerpts on the homepage
 
 # Moving date format
 # refer to https://shopify.github.io/liquid/filters/date/ if you want to customize this
 moving:
-  avatar_url: "https://i.loli.net/2019/08/26/JzCLhDWPEybZr2T.jpg" # avatar in about page
-  about_you: a short description about you. # short description about you in about page
+  avatar_url: "https://tenor.com/ko/view/lum-yes-smile-urusei-yatsura-anime-gif-16987750" # avatar in about page
+  about_you: Mechanic, Developer, and,,, # short description about you in about page
   date_format: "%b %d" # date format of posts in home page
   back_to: "Home" # In the post page, you have a back button above the title, you can custom the text by yourself.
 
   # generate social links in about page.
   social_links:
     # twitter:
-    github: huangyz0918
-    rss: RSS
+    github: dmp100
+    velog : https://velog.io/@dmp100/posts
+    # rss: RSS
     # dribbble:
-    facebook: huangyz0918
+    # facebook: 
     # flickr:
     # instagram:
-    linkedin: yizheng-huang
+    linkedin: 성규현
     # pinterest:
     # youtube:
     # youtube_channel:
