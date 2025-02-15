@@ -1,7 +1,7 @@
-title: Moving # The title of the blog
-author: Your Name # Your name
-email: your-email@domain.com # your email shown in the footer
-url: https://huangyz.name/moving/ # this is your site's root address.
+title: Blog # The title of the blog
+author: Kyuhyun Sung # Your name
+email: dmp100@naver.com # your email shown in the footer
+url: https://dmp100.github.io # this is your site's root address.
 description: > # this means to ignore newlines until "show_excerpts:"
   A clean and minimalist theme for Jekyll.
 favicon: "./favicon.ico" # set the favicon of the site
