@@ -1,5 +1,10 @@
 # https://dmp100.github.io/
 
+Execute
+```
+bundle exec jekyll serve
+```
+
 [![Gem Version](https://badge.fury.io/rb/moving.svg)](https://badge.fury.io/rb/moving) ![](https://img.shields.io/gem/dt/moving)
 
 Moving is a clean and minimalist theme for [Jekyll](https://jekyllrb.com/), focusing on pure and efficient writing. [[view demo]](https://huangyz.name/moving/)
