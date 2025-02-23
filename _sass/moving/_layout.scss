@@ -343,4 +343,16 @@
   .about-content {
     margin-top: 2rem;
   }
+  .post-category {
+    margin-top: 2rem;
+    margin-bottom: 0.25rem;
+    font-weight: 700;
+    color: lighten($text-color, 15%);
+    
+    @media (max-width: 500px) {
+      @include relative-font-size(1.2);
+    }
+    
+    @include relative-font-size(1.5);
+  }
 }
