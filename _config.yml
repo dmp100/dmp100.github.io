@@ -48,3 +48,11 @@ remote_theme: huangyz0918/moving # note, please use huangyz0918/moving if you wa
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
+
+
+# 이미지 경로 설정 (기존 설정에 추가)
+defaults:
+  - scope:
+      path: "assets/images"
+    values:
+      image: true
