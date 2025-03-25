@@ -3,24 +3,21 @@ layout: about
 ---
 
 
-# What im going to do is
+# Why I Created This Blog
 
+Although I already have a [Blog](https://velog.io/@dmp100/posts) account called Velog, it primarily serves as a personal memory archive. With this new blog, I want to share topics I've explored more deeply and provide valuable insights to you.
 
-do something what i learnd about and showing my works.
+# Themes I'm Focusing On
 
-so here's thing
+My content will focus on three main areas:
 
-# reason why i made this blog
+* **Building IT Services From Scratch**: I'll share practical guides on developing applications and services. These will cover everything from initial concept to deployment and maintenance. Expect tutorials, case studies, and lessons learned from my projects.
 
-although i alrady had [Velog](https://velog.io/@dmp100/posts)
+* **Deep Dives Into Technology Concepts and Trends**: I'll explore complex technical concepts in detail, breaking them down into understandable components. This will include analyses of emerging technologies and how they might reshape the industry.
 
-it's only for my memories
+* **Product and Project Analysis and Evaluation**: I'll review notable tools, platforms, and projects, offering objective assessments of their strengths and limitations based on real-world implementation experience.
 
-so wanna make something i know deeper.
+# Connect With Me
 
-# cateories
+Contact me through the profile section above, or check out my [GitHub](https://github.com/dmp100) for more content!
 
-building an IT service, delve deeply into technology, break down and assess a product or project developed by others
-
-that all 
-so let's get started.
