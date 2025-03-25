@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "plan"
-category: _form
+title: "Introduce"
+category: Hello World !
 author: "kyuhyun Sung"
 meta: "Springfield"
 ---
