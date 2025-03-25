@@ -2,9 +2,25 @@
 layout: about
 ---
 
-These are controlled by `about.md` under the root directory. If you want a more diverse self-introduction, you can insert the markdown content you want here.
 
-### What's New
+# What im going to do is
 
-- One paper got accepted in xxx 2019.
-- I'm going to join xxx as a xxx 2019 Fall.
+
+do something what i learnd about and showing my works.
+
+so here's thing
+
+# reason why i made this blog
+
+although i alrady had [Velog](https://velog.io/@dmp100/posts)
+
+it's only for my memories
+
+so wanna make something i know deeper.
+
+# cateories
+
+building an IT service, delve deeply into technology, break down and assess a product or project developed by others
+
+that all 
+so let's get started.
