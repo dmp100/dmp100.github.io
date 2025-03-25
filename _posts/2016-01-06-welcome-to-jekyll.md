@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "_post"
-category: _form
+category: .
 author: "Yizheng Huang"
 meta: "Springfield"
 ---
