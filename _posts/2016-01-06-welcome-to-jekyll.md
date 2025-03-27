@@ -12,11 +12,14 @@ meta: "Springfield"
 bundle exec jekyll serve
 ```
 
+# How to Paste image in vsCode 
+
 ![](/assets/images/2025-03-25-18-45-52.png)
 
 - use Option+command+V (mac)
 
-![이미지 설명](/assets/images/2025-03-25-18-20-39.png)
+# Tutorial
+---
 
 You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
 
@@ -139,8 +142,15 @@ lorem ipsum dolor sit | lorem ipsum dolor sit | lorem ipsum dolor sit | lorem ip
 
 ![image](https://github.com/user-attachments/assets/4ac21183-2f8c-405d-9c2c-02018d4e79e8)
 
-
+### Video
 [![Video Label](http://img.youtube.com/vi/Ex0L2hkMTB0/0.jpg)](https://youtu.be/Ex0L2hkMTB0)
+
+{% include youtube.html id="Ex0L2hkMTB0" %}
+
+```
+{% include youtube.html id="여기에_유튜브_비디오_ID" %}
+```
+
 
 ### Styles
 
@@ -155,13 +165,14 @@ Proin eget nibh a massa vestibulum pretium. Suspendisse eu nisl a ante aliquet b
 -----
 
 ### 0. 한국어
+
+
 한국어테스트한국어테스트한국어테스트한국어테스트
 한국어테스트한국어테스트한국어테스트한국어테스트한국어테스트한국어테스트한국어테스트한국어테스트한국어테스트
-## 한국어테스트한국어테스트
+
 
 ### 1. 日本語テスト
 
-This is a Japanese test post to show you how japanese is displayed.
 
 私は昨日ついにその助力家というのの上よりするたなけれ。
 最も今をお話団はちょうどこの前後なかろでくらいに困りがいるたをは帰着考えたなかって、そうにもするでうたらない。
@@ -178,7 +189,6 @@ From [すぐ使えるダミーテキスト - 日本語 Lorem ipsum.](http://lips
 
 ### 2. 繁体中文测试
 
-This is a chinese test post to show you how chinese is displayed.
 
 善我王上魚、產生資西員合兒臉趣論。畫衣生這著爸毛親可時，安程幾？合學作。觀經而作建。都非子作這！法如言子你關！手師也。
 
