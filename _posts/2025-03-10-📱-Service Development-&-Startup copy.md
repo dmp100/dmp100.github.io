@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "."
-category: 📱 Service Development & Startup
+title: "What Inspired Me to Start This Project"
+category: 📱 Project (noname)
 author: "kyuhyun Sung"
 ---
 
