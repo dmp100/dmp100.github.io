@@ -1,0 +1,4 @@
+# 내용 입력
+echo "User-agent: *
+Allow: /
+Sitemap: https://dmp100.github.io/sitemap.xml" > robots.txt
