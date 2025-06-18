@@ -60,3 +60,7 @@ defaults:
      path: "assets/images"
    values:
      image: true
+
+# Jekyll 빌드 시 포함할 파일들
+include:
+  - ads.txt
