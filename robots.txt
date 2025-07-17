@@ -1,4 +1,3 @@
-# 내용 입력
-echo "User-agent: *
+User-agent: *
 Allow: /
-Sitemap: https://dmp100.github.io/sitemap.xml" > robots.txt
+Sitemap: https://dmp100.github.io/sitemap.xml
