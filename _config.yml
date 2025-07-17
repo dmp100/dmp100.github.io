@@ -12,7 +12,6 @@ lang: "ko-KR"
 baseurl: ""
 
 # Environment settings
-url: "https://dmp100.github.io"
 ENV: JEKYLL_ENV
 
 # Moving date format
