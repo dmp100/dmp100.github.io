@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Comparative Analysis of Declarative UI Paradigms: Jetpack Compose vs SwiftUI"
-category: 🔬 Technology Research
+category: research
 author: "kyuhyun Sung"
 ---
 

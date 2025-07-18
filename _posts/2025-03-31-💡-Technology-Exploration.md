@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "MCP"
-category: 💡 Technology Exploration
+category: technology
 author: "kyuhyun Sung"
 ---
 

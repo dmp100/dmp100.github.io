@@ -3,7 +3,7 @@ layout: post
 title: "I'm looking around for different development resources"
 description: "개발 리소스를 찾아보며 IT 서비스 기획에 대한 생각을 정리합니다. Pieter Levels의 12개월 12프로젝트 경험을 통해 배운 효율적인 프로젝트 접근법에 대해 나눕니다."
 date: 2025-04-07
-category: 📒 notes
+category: notes
 tags: [Development, IT Service, Project Planning, Startup, levels.io, Personal Notes]
 author: "Kyuhyun Sung"
 image: /assets/images/2025-04-07-19-49-50.png

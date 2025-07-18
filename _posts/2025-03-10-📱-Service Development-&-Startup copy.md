@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "What Inspired Me to Start This Project"
-category: 📱 Project (noname)
+category: project
 author: "kyuhyun Sung"
 ---
 
