@@ -14,6 +14,10 @@ baseurl: ""
 # Environment settings
 ENV: JEKYLL_ENV
 
+# Force production URL
+url: "https://dmp100.github.io"
+baseurl: ""
+
 # Moving date format
 # refer to https://shopify.github.io/liquid/filters/date/ if you want to customize this
 moving:
