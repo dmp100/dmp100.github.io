@@ -71,3 +71,18 @@ defaults:
 # Jekyll 빌드 시 포함할 파일들
 include:
   - ads.txt
+
+# Sitemap에서 제외할 파일들
+exclude:
+  - google2b89ef6982bc2057.html
+  - .DS_Store
+  - .git
+  - .github
+  - .gitignore
+  - .jekyll-cache
+  - .vscode
+  - Gemfile
+  - Gemfile.lock
+  - LICENSE.txt
+  - README.md
+  - moving.gemspec
