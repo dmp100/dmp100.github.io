@@ -159,7 +159,7 @@ sitemap: false
   cursor: pointer !important;
   backdrop-filter: blur(10px) !important;
   border: 1px solid rgba(255,255,255,0.3) !important;
-  min-height: 120px !important;
+  min-height: 140px !important;
   display: flex !important;
   align-items: center !important;
 }
@@ -193,7 +193,15 @@ sitemap: false
   font-size: 1.3rem !important;
   font-weight: 400 !important;
   color: #2c3e50 !important;
+  margin: 0 0 8px 0 !important;
+}
+
+.project-description-gray {
+  color: #9ca3af !important;
+  font-size: 0.9rem !important;
+  line-height: 1.5 !important;
   margin: 0 !important;
+  font-weight: 400 !important;
 }
 
 .project-card-large .project-description {
