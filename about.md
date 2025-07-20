@@ -50,6 +50,9 @@ This space serves as my digital garden where I document my journey in technology
 .profile-header {
   display: flex;
   align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
   margin-bottom: 40px;
   padding: 30px;
   background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
@@ -61,7 +64,7 @@ This space serves as my digital garden where I document my journey in technology
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  margin-right: 24px;
+  margin-bottom: 16px;
   border: 3px solid #fff;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
@@ -108,8 +111,6 @@ This space serves as my digital garden where I document my journey in technology
 
 @media (max-width: 768px) {
   .profile-header {
-    flex-direction: column;
-    text-align: center;
     padding: 20px 15px !important;
     margin-bottom: 30px !important;
   }
@@ -117,7 +118,6 @@ This space serves as my digital garden where I document my journey in technology
   .profile-image {
     width: 60px !important;
     height: 60px !important;
-    margin-right: 0 !important;
     margin-bottom: 12px !important;
     border-width: 2px !important;
   }
