@@ -59,7 +59,7 @@ sitemap: false
   font-weight: 500 !important;
 }
 
-/* Ensure buttons show up */
+/* Ensure buttons show up - Same style as other sections */
 .project-hero .hero-actions {
   display: flex !important;
   gap: 16px !important;
@@ -72,17 +72,29 @@ sitemap: false
   display: inline-flex !important;
   align-items: center !important;
   gap: 8px !important;
-  padding: 14px 28px !important;
+  padding: 16px 32px !important;
   border-radius: 50px !important;
   text-decoration: none !important;
   font-weight: 600 !important;
   font-size: 16px !important;
   transition: all 0.3s ease !important;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important;
+}
+
+.project-hero .btn:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15) !important;
 }
 
 .project-hero .btn-primary {
   background: white !important;
   color: #667eea !important;
+  border: 2px solid white !important;
+}
+
+.project-hero .btn-primary:hover {
+  background: #f8f9fa !important;
+  color: #5a6fd8 !important;
 }
 
 .project-hero .btn-secondary {
@@ -90,4 +102,9 @@ sitemap: false
   color: white !important;
   border: 2px solid rgba(255,255,255,0.3) !important;
   backdrop-filter: blur(10px) !important;
+}
+
+.project-hero .btn-secondary:hover {
+  background: rgba(255,255,255,0.2) !important;
+  border-color: rgba(255,255,255,0.5) !important;
 }
