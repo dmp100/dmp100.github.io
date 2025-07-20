@@ -112,6 +112,22 @@ layout: default
         <p>{{ page.notion_landing.description }}</p>
       </div>
       <a href="{{ page.notion_landing.url }}" class="card-button" target="_blank" rel="noopener">
+        {% case page.notion_landing.type %}
+          {% when 'notion' %}
+            📋
+          {% when 'landing' %}
+            🌐
+          {% when 'docs' %}
+            📚
+          {% when 'website' %}
+            🔗
+          {% when 'github' %}
+            💻
+          {% when 'demo' %}
+            🎮
+          {% else %}
+            🔗
+        {% endcase %}
         Visit Link →
       </a>
     </div>
@@ -891,6 +907,7 @@ layout: default
   align-items: center;
   justify-content: center;
   text-align: center;
+  gap: 8px;
 }
 
 .card-button:hover {

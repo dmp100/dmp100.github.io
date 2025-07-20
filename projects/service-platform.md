@@ -8,7 +8,6 @@ icon_image: "/assets/images/icons/service-platform-icon.png"
 project_id: "service-platform"
 order: 1
 demo_url: "https://dmp100.github.io"
-github_url: "https://github.com/dmp100/"
 screenshots:
   - youtube: "8GlQVlvgYBA"
     title: "Live Demo"
