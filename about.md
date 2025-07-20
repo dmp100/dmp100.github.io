@@ -47,41 +47,55 @@ This space serves as my digital garden where I document my journey in technology
 </div>
 
 <style>
-/* FORCE UPDATE - Profile Center Alignment v1 */
+/* FORCE UPDATE - Profile Center Alignment v2 - MAXIMUM OVERRIDE */
 .profile-header {
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
   flex-direction: column !important;
   text-align: center !important;
-  margin-bottom: 40px;
-  padding: 30px;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-  border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  margin-bottom: 40px !important;
+  padding: 30px !important;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
+}
+
+.profile-header * {
+  text-align: center !important;
 }
 
 .profile-image {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  margin-bottom: 16px;
-  border: 3px solid #fff;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  width: 80px !important;
+  height: 80px !important;
+  border-radius: 50% !important;
+  margin-bottom: 16px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  border: 3px solid #fff !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+  display: block !important;
+}
+
+.profile-info {
+  text-align: center !important;
+  width: 100% !important;
 }
 
 .profile-info h1 {
-  margin: 0 0 8px 0;
-  font-size: 2rem;
-  color: #2c3e50;
+  margin: 0 0 8px 0 !important;
+  font-size: 2rem !important;
+  color: #2c3e50 !important;
   text-align: center !important;
+  width: 100% !important;
 }
 
 .location {
-  margin: 0;
-  color: #7f8c8d;
-  font-size: 1.1rem;
+  margin: 0 !important;
+  color: #7f8c8d !important;
+  font-size: 1.1rem !important;
   text-align: center !important;
+  width: 100% !important;
 }
 
 .connect-links {
