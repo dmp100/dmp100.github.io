@@ -110,16 +110,36 @@ This space serves as my digital garden where I document my journey in technology
   .profile-header {
     flex-direction: column;
     text-align: center;
-    padding: 24px;
+    padding: 20px 15px !important;
+    margin-bottom: 30px !important;
   }
   
   .profile-image {
-    margin-right: 0;
-    margin-bottom: 16px;
+    width: 60px !important;
+    height: 60px !important;
+    margin-right: 0 !important;
+    margin-bottom: 12px !important;
+    border-width: 2px !important;
+  }
+  
+  .profile-info h1 {
+    font-size: 1.5rem !important;
+    margin-bottom: 6px !important;
+  }
+  
+  .location {
+    font-size: 0.9rem !important;
   }
   
   .connect-links {
     grid-template-columns: 1fr;
+    gap: 12px !important;
+    margin-top: 24px !important;
+  }
+  
+  .connect-links a {
+    padding: 12px 16px !important;
+    font-size: 0.9rem !important;
   }
 }
 </style>
