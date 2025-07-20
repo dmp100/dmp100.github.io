@@ -2,7 +2,9 @@
 layout: project
 title: "IT Service Platform"
 description: "Building comprehensive IT services from scratch with focus on user experience, scalable architecture, and growth strategy."
-emoji: "🚀"
+# emoji: "💼"
+# emoji 대신 실제 이미지 사용
+icon_image: "/assets/images/icons/service-platform-icon.png"
 project_id: "service-platform"
 order: 1
 demo_url: "https://dmp100.github.io"
@@ -14,14 +16,10 @@ screenshots:
     type: "video"
 notion_landing:
   url: "https://your-notion-page-link.com"
-  title: "Complete Project Documentation"
-  description: "기술 스택, 아키텍처, 개발 로드맵 등 상세 정보를 확인하세요"
-  type: "notion"  # notion, landing, docs, website, github, demo 등 자유롭게
-  # type에 따른 아이콘과 버튼 텍스트:
-  # notion: 📋 "문서 보기"
-  # landing: 🌐 "램딩페이지"
-  # docs: 📚 "문서 확인"
-  # website: 🔗 "사이트 방문"
-  # github: 💻 "코드 보기"
-  # demo: 🎮 "데모 체험"
+  title: "U should come and see this."
+  description: "This is Where fun begins."
+  type: "demo"  # notion, landing, docs, website, github, demo 등 자유롭게
+  # type에 따른 아이콘 (버튼은 모두 "Visit Link"로 통일):
+  # notion: 📋, landing: 🌐, docs: 📚
+  # website: 🔗, github: 💻, demo: 🎮
 ---

@@ -112,22 +112,7 @@ layout: default
         <p>{{ page.notion_landing.description }}</p>
       </div>
       <a href="{{ page.notion_landing.url }}" class="card-button" target="_blank" rel="noopener">
-        {% case page.notion_landing.type %}
-          {% when 'notion' %}
-            문서 보기 →
-          {% when 'landing' %}
-            램딩페이지 →
-          {% when 'docs' %}
-            문서 확인 →
-          {% when 'website' %}
-            사이트 방문 →
-          {% when 'github' %}
-            코드 보기 →
-          {% when 'demo' %}
-            데모 체험 →
-          {% else %}
-            자세히 보기 →
-        {% endcase %}
+        Visit Link →
       </a>
     </div>
   </div>
