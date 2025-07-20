@@ -1,0 +1,23 @@
+- name: "IT Service Platform"
+  status: "In Progress"
+  description: "Building comprehensive IT services from scratch with focus on user experience and scalable architecture"
+  tech_stack: ["React", "Node.js", "MongoDB"]
+  category: "web"
+  
+- name: "Android Development Research"
+  status: "Ongoing"
+  description: "Deep dive into AOSP, Jetpack Compose, and modern Android development practices"
+  tech_stack: ["Android", "Kotlin", "Jetpack Compose"]
+  category: "mobile"
+  
+- name: "Technology Analysis Blog"
+  status: "Live"
+  description: "Personal blog for sharing deep technical insights and product evaluations"
+  tech_stack: ["Jekyll", "GitHub Pages", "Markdown"]
+  category: "blog"
+  
+- name: "Startup Case Studies"
+  status: "Planning"
+  description: "Analyzing successful startup journeys like Pieter Levels' 12 projects in 12 months"
+  tech_stack: ["Research", "Analysis", "Writing"]
+  category: "research"

@@ -1,0 +1,38 @@
+---
+layout: default
+---
+
+<div class="all-projects-page">
+  <div class="post-back">
+    <a class="black-link" href="{{ '/' | relative_url }}">
+      ← Back to Home
+    </a>
+  </div>
+  
+  <div class="projects-header">
+    <h1 class="projects-title">All Projects</h1>
+    <p class="projects-description">A complete overview of my development projects and research initiatives.</p>
+  </div>
+  
+  <!-- Projects Grid -->
+  <div class="projects-grid">
+    {% assign all_projects = site.pages | where: 'layout', 'project' | sort: 'order' %}
+    {% for project in all_projects %}
+    <div class="project-card-large" onclick="location.href='{{ project.url | relative_url }}'">
+      <div class="project-header">
+        <div class="project-icon">
+          {% if project.icon_image %}
+            <img src="{{ project.icon_image }}" alt="{{ project.title }} icon" style="width: 40px; height: 40px; border-radius: 8px;">
+          {% else %}
+            {{ project.emoji | default: "🚀" }}
+          {% endif %}
+        </div>
+        <div class="project-info">
+          <h3 class="project-name">{{ project.title }}</h3>
+        </div>
+      </div>
+      <p class="project-description">{{ project.description }}</p>
+    </div>
+    {% endfor %}
+  </div>
+</div>

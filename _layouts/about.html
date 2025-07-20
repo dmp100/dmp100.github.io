@@ -3,29 +3,71 @@ layout: default
 ---
 
 <div class="about-page">
-  <head>
-    <title>{{ site.author }}</title>
-  </head>
-  <div class="post-back">
-    <a class="black-link" href="{{ site.url | relative_url }}"> ← {{ site.moving.back_to }} </a>
-  </div>
+  <!-- Header -->
   <div class="about-header">
-    {%- if site.moving.avatar_url -%}
-    <img class="about-avatar" src="{{ site.moving.avatar_url }}" />
-    {%- endif -%} {%- if site.author -%}
-    <div class="about-info">
-      <div class="about-your-name">
-        {{ site.author | escape }}
+    <div class="about-profile">
+      <img src="https://raw.githubusercontent.com/dmp100/gobongbab/main/lum.gif" alt="Kyuhyun Sung" class="about-avatar" />
+      <div class="about-info">
+        <h1>Kyuhyun Sung</h1>
+        <p class="about-subtitle">Developer & Builder</p>
+        <div class="about-meta">
+          <span>📍 Seoul, Korea</span>
+          <span>💻 Making My Own Things</span>
+        </div>
       </div>
-      {%- endif -%} {%- if site.moving.about_you -%}
-      <p class="about-description">
-        {{ site.moving.about_you | escape }}
-      </p>
-      {%- endif -%} {%- include social.html -%}
+    </div>
+    <div class="post-back">
+      <a class="black-link" href="{{ '/' | relative_url }}">
+        ← Back to Home
+      </a>
     </div>
   </div>
 
-  <div class="about-content e-content" itemprop="articleBody">
-    {{ content }}
+  <!-- About Content -->
+  <div class="about-content">
+    <section class="about-section">
+      <h2>👋 Hello, World!</h2>
+      <p>I'm a developer passionate about building meaningful digital experiences. Based in Seoul, I spend my time creating applications, exploring new technologies, and sharing what I learn along the way.</p>
+    </section>
+
+    <section class="about-section">
+      <h2>🎯 Philosophy</h2>
+      <blockquote class="philosophy-quote">
+        "Building products isn't just about code—it's about solving real problems and creating experiences that matter."
+      </blockquote>
+      <p>Inspired by makers like Pieter Levels, I believe in rapid iteration, learning from users, and building products that actually solve problems. I focus on shipping quickly and improving based on real feedback.</p>
+    </section>
+
+    <section class="about-section">
+      <h2>📚 Why This Blog?</h2>
+      <p>While I have a <a href="https://velog.io/@dmp100/posts" target="_blank">personal archive on Velog</a>, this blog is where I share deeper explorations and insights. I write about three main areas:</p>
+      <ul class="blog-themes">
+        <li><strong>IT Service Development</strong> - Practical guides from concept to deployment</li>
+        <li><strong>Technical Deep Dives</strong> - Complex concepts made understandable</li>
+        <li><strong>Product Analysis</strong> - Honest evaluations of tools and projects</li>
+      </ul>
+    </section>
+
+    <section class="about-section connect-section">
+      <h2>🤝 Let's Connect</h2>
+      <div class="connect-links">
+        <a href="https://github.com/dmp100" target="_blank" class="connect-link">
+          <span class="connect-icon">🐙</span>
+          <span>GitHub</span>
+        </a>
+        <a href="https://www.linkedin.com/in/%EA%B7%9C%ED%98%84-%EC%84%B1-1a16b629a/" target="_blank" class="connect-link">
+          <span class="connect-icon">💼</span>
+          <span>LinkedIn</span>
+        </a>
+        <a href="https://x.com/dmp100379702" target="_blank" class="connect-link">
+          <span class="connect-icon">🐦</span>
+          <span>X (Twitter)</span>
+        </a>
+        <a href="mailto:dmp100@naver.com" class="connect-link">
+          <span class="connect-icon">✉️</span>
+          <span>Email</span>
+        </a>
+      </div>
+    </section>
   </div>
 </div>

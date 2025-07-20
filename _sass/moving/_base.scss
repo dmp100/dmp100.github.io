@@ -209,19 +209,21 @@ pre {
   * Wrapper
   */
 .wrapper {
-  max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit}));
-  max-width: calc(#{$content-width} - (#{$spacing-unit}));
+  max-width: calc(680px - 30px);
   margin-right: auto;
   margin-left: auto;
-  padding-right: $spacing-unit / 2;
-  padding-left: $spacing-unit / 2;
+  padding-right: 15px;
+  padding-left: 15px;
   @extend %clearfix;
 
-  @media screen and (min-width: $on-large) {
-    max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit} * 2));
-    max-width: calc(#{$content-width} - (#{$spacing-unit} * 2));
-    padding-right: $spacing-unit;
-    padding-left: $spacing-unit;
+  @media screen and (min-width: 768px) {
+    max-width: calc(680px - 60px);
+    padding-right: 30px;
+    padding-left: 30px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    max-width: calc(800px - 60px);
   }
 }
 

@@ -2,36 +2,192 @@
 layout: default
 ---
 
+<style>
+/* Simple Projects List */
+.projects-simple-list {
+  margin-top: 20px;
+}
+
+.project-simple-item {
+  background: white;
+  border: 1px solid #e5e5e5;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.project-simple-item:hover {
+  border-color: #667eea;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transform: translateY(-2px);
+}
+
+.project-simple-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.project-simple-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+.project-simple-icon {
+  font-size: 20px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.project-simple-icon-img {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+}
+
+.project-simple-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.project-simple-desc {
+  font-size: 13px;
+  color: #666;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.project-simple-status {
+  font-size: 10px;
+  font-weight: 600;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  max-width: 70px;
+  min-width: 50px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.project-simple-status.status-released {
+  background: linear-gradient(135deg, #4CAF50, #66BB6A);
+}
+
+.project-simple-status.status-in-development {
+  background: linear-gradient(135deg, #FF9800, #FFB74D);
+}
+
+.project-simple-status.status-mvp {
+  background: linear-gradient(135deg, #2196F3, #64B5F6);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .project-simple-item {
+    padding: 14px;
+  }
+  
+  .project-simple-icon {
+    font-size: 18px;
+    width: 28px;
+    height: 28px;
+  }
+  
+  .project-simple-icon-img {
+    width: 18px;
+    height: 18px;
+  }
+  
+  .project-simple-title {
+    font-size: 15px;
+  }
+  
+  .project-simple-desc {
+    font-size: 12px;
+  }
+}
+</style>
+
 <div class="home">
   <head>
     <title>{{ site.title }}</title>
   </head>
-  <div class="home-title">
-    <p class="home-heading">{{ site.title }}</p>
-    <p class="home-sub-heading">{{- site.description | escape -}}</p>
+  
+  <!-- Profile Card -->
+  <div class="profile-card">
+    <div class="profile-image">
+      <img src="https://raw.githubusercontent.com/dmp100/gobongbab/main/lum.gif" alt="Kyuhyun Sung" />
+    </div>
+    <h1 class="profile-name"><a href="/about/" class="profile-link">Kyuhyun Sung</a></h1>
+    <div class="profile-meta">
+      <span class="location">📍 Seoul, Korea</span>
+      <span class="status">💻 Developer, Builder</span>
+    </div>
+    <p class="profile-tagline">{{- site.description | escape -}}</p>
+    
+    <div class="newsletter-info">
+      <strong>Building IT Services From Scratch & Deep Tech Insights</strong>
+      <p>I share practical guides on developing applications, deep dives into technology concepts, and product analysis.</p>
+    </div>
+  </div>
+
+  <!-- Projects Section -->
+  <div class="projects-section">
+    <h2 class="section-title" onclick="location.href='/projects/'">🚀 Projects</h2>
+    
+    <div class="projects-simple-list">
+      {% assign projects = site.pages | where: 'layout', 'project' | sort: 'order' %}
+      {% for project in projects limit:4 %}
+      <div class="project-simple-item" onclick="location.href='{{ project.url | relative_url }}'">
+        <div class="project-simple-header">
+          <div class="project-simple-left">
+            {% if project.icon_image %}
+              <img src="{{ project.icon_image }}" alt="{{ project.title }} icon" class="project-simple-icon-img">
+            {% else %}
+              <span class="project-simple-icon">{{ project.emoji | default: "🚀" }}</span>
+            {% endif %}
+            <h3 class="project-simple-title">{{ project.title }}</h3>
+          </div>
+        </div>
+        <p class="project-simple-desc">{{ project.description }}</p>
+      </div>
+      {% endfor %}
+    </div>
   </div>
 
   {%- if site.posts.size > 0 -%}
-  <div class="post-list">
-    {% assign categories = site.posts | map: "category" | uniq %}
-    {% for category in categories %}
-      <h2 id="{{ category }}-ref" class="post-category">{{ category | capitalize }}</h2>
-      <ul>
-        {% for post in site.posts %}
-          {% if post.category == category %}
-            <li>
-              {%- assign date_format = site.moving.date_format | default: "%b %-d, %Y" -%}
-              <span class="post-meta">
-                {{ post.date | date: date_format }}
-              </span>
-              <a class="black-link post-link-layout" href="{{ post.url | relative_url }}">
-                {{ post.title | escape }}
-              </a>
-            </li>
-          {% endif %}
-        {% endfor %}
-      </ul>
-    {% endfor %}
+  <!-- Recent Posts Section -->
+  <div class="posts-section">
+    <h2 class="section-title" onclick="location.href='/posts/'">📝 Recent Posts</h2>
+    
+    <div class="post-list-new">
+      {% for post in site.posts limit:4 %}
+        <div class="post-item">
+          <div class="post-date">{{ post.date | date: "%y.%m.%d" }}</div>
+          <div class="post-content-wrapper">
+            <a class="post-title-link" href="{{ post.url | relative_url }}">
+              {{ post.title | escape }}
+            </a>
+            <div class="post-category category-{{ post.category | downcase }}">
+              {{ post.category | capitalize }}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
   </div>
   {%- endif -%}
 </div>

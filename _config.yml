@@ -86,3 +86,5 @@ exclude:
   - LICENSE.txt
   - README.md
   - moving.gemspec
+  - _backup/
+  - "*.backup"

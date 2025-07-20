@@ -5,16 +5,10 @@
         <div class="footer-col">
           <ul class="contact-list">
             <li class="p-name">
-              {%- if site.author -%}
-                <a class="black-link" href="{{ site.url }}/about.html">
-                  {{ site.author | escape }} 
-                </a>
-              {%- endif -%}
-              </li>
               {%- if site.email -%}
-              <li>
-              <a class="u-email black-link" href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+              <a class="u-email black-link" href="mailto:{{ site.email }}">{{ site.email }}</a>
               {%- endif -%}
+            </li>
           </ul>
         </div>
       </div>

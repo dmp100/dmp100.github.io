@@ -1,0 +1,213 @@
+---
+layout: default
+---
+
+<div class="project-detail">
+  <div class="post-back">
+    <a class="black-link" href="{{ '/' | relative_url }}">
+      ← Back to Home
+    </a>
+  </div>
+  
+  <!-- Project Hero Section -->
+  <div class="project-hero" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; text-align: center; padding: 80px 20px; position: relative; overflow: hidden;">
+    
+    <div style="position: relative; z-index: 2;">
+      <div class="project-app-icon" style="margin-bottom: 24px;">
+        {% if page.icon_image %}
+          <img src="{{ page.icon_image }}" alt="{{ page.title }} icon" style="width: 100px; height: 100px; border-radius: 20px; border: 3px solid rgba(255,255,255,0.3); box-shadow: 0 8px 32px rgba(0,0,0,0.2);">
+        {% else %}
+          <div style="font-size: 64px; width: 100px; height: 100px; background: rgba(255,255,255,0.2); border-radius: 20px; display: inline-flex; align-items: center; justify-content: center; backdrop-filter: blur(10px); border: 3px solid rgba(255,255,255,0.3); box-shadow: 0 8px 32px rgba(0,0,0,0.2);">{{ page.emoji | default: "🚀" }}</div>
+        {% endif %}
+      </div>
+      
+      <h1 style="color: white; font-size: 3rem; font-weight: 800; text-shadow: 0 4px 20px rgba(0,0,0,0.3); margin: 24px 0 20px 0; letter-spacing: -0.02em;">{{ page.title }}</h1>
+      
+      <p style="color: rgba(255,255,255,0.95); font-size: 1.3rem; text-shadow: 0 2px 10px rgba(0,0,0,0.3); margin: 0 auto 40px auto; max-width: 680px; line-height: 1.7; font-weight: 400; background: rgba(255,255,255,0.1); padding: 20px 30px; border-radius: 16px; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2);">{{ page.description }}</p>
+      
+      {% if page.demo_url or page.github_url %}
+      <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-top: 40px;">
+        {% if page.demo_url %}
+          <a href="{{ page.demo_url }}" target="_blank" style="padding: 16px 32px; background: white; color: #667eea; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 16px; transition: all 0.3s ease; border: 2px solid white; box-shadow: 0 8px 25px rgba(0,0,0,0.15); display: inline-flex; align-items: center; gap: 8px;">✨ View Demo</a>
+        {% endif %}
+        {% if page.github_url %}
+          <a href="{{ page.github_url }}" target="_blank" style="padding: 16px 32px; background: rgba(255,255,255,0.1); color: white; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 16px; transition: all 0.3s ease; border: 2px solid rgba(255,255,255,0.3); backdrop-filter: blur(10px); display: inline-flex; align-items: center; gap: 8px;">💻 View Code</a>
+        {% endif %}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+
+  <!-- Project Summary Card -->
+  <div class="project-summary">
+    <div class="summary-card">
+      <h2 class="summary-title">Project Overview</h2>
+      <div class="summary-content">
+        <div class="summary-grid">
+          <div class="summary-item">
+            <div class="summary-icon">🎯</div>
+            <div class="summary-info">
+              <h3>Objective</h3>
+              <p>Building comprehensive IT services from scratch with focus on user experience and scalability</p>
+            </div>
+          </div>
+          <div class="summary-item">
+            <div class="summary-icon">🛠️</div>
+            <div class="summary-info">
+              <h3>Technology Focus</h3>
+              <p>Modern web technologies with emphasis on performance and maintainability</p>
+            </div>
+          </div>
+          <div class="summary-item">
+            <div class="summary-icon">📈</div>
+            <div class="summary-info">
+              <h3>Current Stage</h3>
+              <p>Active development phase with core architecture established</p>
+            </div>
+          </div>
+          <div class="summary-item">
+            <div class="summary-icon">🔥</div>
+            <div class="summary-info">
+              <h3>Key Features</h3>
+              <p>Scalable architecture, responsive design, and comprehensive user management</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Project Images/Screenshots Section -->
+  {% if page.images %}
+  <div class="project-images">
+    <h2 class="section-title">🖼️ Screenshots</h2>
+    <div class="images-grid">
+      {% for image in page.images %}
+        <div class="image-item">
+          <img src="{{ image.src }}" alt="{{ image.alt | default: page.title }}" />
+          {% if image.caption %}
+            <p class="image-caption">{{ image.caption }}</p>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
+  <!-- Project Details Section -->
+  <div class="project-details">
+    <div class="detail-card">
+      <h3 class="detail-title">🎯 Project Overview</h3>
+      <div class="detail-content">
+        <p>{{ page.description }}</p>
+        <div class="key-points">
+          <h4>Key Features</h4>
+          <ul>
+            <li>User-centered design approach</li>
+            <li>Scalable architecture planning</li>
+            <li>Modern development practices</li>
+            <li>Performance optimization focus</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="detail-card">
+      <h3 class="detail-title">🛠️ Development Approach</h3>
+      <div class="detail-content">
+        <div class="approach-grid">
+          <div class="approach-item">
+            <h4>Planning</h4>
+            <p>Comprehensive requirement analysis and architecture design</p>
+          </div>
+          <div class="approach-item">
+            <h4>Development</h4>
+            <p>Iterative development with continuous integration</p>
+          </div>
+          <div class="approach-item">
+            <h4>Testing</h4>
+            <p>Automated testing and quality assurance</p>
+          </div>
+          <div class="approach-item">
+            <h4>Deployment</h4>
+            <p>Scalable deployment with monitoring</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="detail-card">
+      <h3 class="detail-title">📈 Current Progress</h3>
+      <div class="detail-content">
+        <div class="progress-timeline">
+          <div class="timeline-item completed">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <h4>Research & Planning</h4>
+              <p>Requirements gathering and technical research completed</p>
+            </div>
+          </div>
+          <div class="timeline-item active">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <h4>Core Development</h4>
+              <p>Building core features and functionality</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <h4>Testing & Optimization</h4>
+              <p>Comprehensive testing and performance optimization</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <h4>Launch</h4>
+              <p>Final deployment and launch preparation</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Project Content -->
+  <div class="project-content">
+    {{ content }}
+  </div>
+
+  <!-- Development Logs Section -->
+  {% assign project_posts = site.posts | where: "project", page.project_id %}
+  {% if project_posts.size > 0 %}
+  <div class="dev-logs-section">
+    <h2 class="section-title">📝 Development Journey</h2>
+    <p class="dev-logs-description">Follow the development process, challenges, and learnings throughout this project.</p>
+    
+    <div class="dev-logs-list">
+      {% for post in project_posts limit:5 %}
+        <div class="dev-log-item">
+          <div class="post-date">{{ post.date | date: "%y.%m.%d" }}</div>
+          <div class="post-content-wrapper">
+            <a class="post-title-link" href="{{ post.url | relative_url }}">
+              {{ post.title | escape }}
+            </a>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    
+    {% if project_posts.size > 5 %}
+      <div class="view-all-logs">
+        <a href="#" class="view-all-btn">View All Development Logs →</a>
+      </div>
+    {% endif %}
+  </div>
+  {% else %}
+  <div class="dev-logs-section">
+    <h2 class="section-title">📝 Development Journey</h2>
+    <p class="dev-logs-description">Development logs for this project will be published soon. Stay tuned for insights into the development process!</p>
+  </div>
+  {% endif %}
+</div>

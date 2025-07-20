@@ -15,10 +15,36 @@ layout: default
   </head>
   <header class="post-header">
     <div class="post-back">
-      <a class="black-link" href="{{ site.url | relative_url }}">
-        ← {{ site.moving.back_to }}
+      <a class="black-link" href="#" id="smart-back-btn">
+        ← <span id="back-text">Back</span>
       </a>
     </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const backBtn = document.getElementById('smart-back-btn');
+      const backText = document.getElementById('back-text');
+      const urlParams = new URLSearchParams(window.location.search);
+      const referrer = document.referrer;
+      const fromParam = urlParams.get('from');
+      
+      // Check URL parameter first (most reliable)
+      if (fromParam === 'posts') {
+        backBtn.href = '/posts/';
+        backText.textContent = 'Back to Recent Posts';
+      }
+      // Fallback to referrer check
+      else if (referrer && referrer.includes('/posts/')) {
+        backBtn.href = '/posts/';
+        backText.textContent = 'Back to Recent Posts';
+      }
+      // Default to home page
+      else {
+        backBtn.href = '/';
+        backText.textContent = 'Back to Home';
+      }
+    });
+    </script>
 
     <h1 class="post-title p-name" itemprop="name headline">
       {{ page.title | escape }}

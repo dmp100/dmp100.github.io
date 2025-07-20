@@ -1,0 +1,94 @@
+---
+layout: post
+title: "AOSP"
+date: 2025-04-01
+category: "Android"
+project: "android-research"
+---
+
+# AOSP (Android Open Source Project)
+
+## Overview
+
+AOSP 분석 및 Android 시스템 개발에 대한 연구 포스트입니다.
+
+## What is AOSP?
+
+AOSP는 Google이 주도하는 Android 운영체제의 오픈소스 프로젝트입니다.
+
+## Key Areas of Study
+
+### System Architecture
+- Android Framework 구조 분석
+- HAL (Hardware Abstraction Layer) 이해
+- Kernel과 User Space 간의 상호작용
+
+### Development Environment
+- AOSP 빌드 시스템 설정
+- 개발 도구 및 워크플로우
+- 디버깅 및 테스팅 방법론
+
+### Customization Opportunities
+- 시스템 앱 수정
+- Framework 레벨 커스터마이징
+- 새로운 기능 추가 방법
+
+## Technical Deep Dive
+
+### Build System
+AOSP의 빌드 시스템은 복잡하지만 체계적으로 구성되어 있습니다.
+
+```bash
+# AOSP 소스 다운로드
+repo init -u https://android.googlesource.com/platform/manifest
+repo sync
+
+# 빌드 환경 설정
+source build/envsetup.sh
+lunch aosp_arm64-eng
+
+# 빌드 실행
+make -j$(nproc)
+```
+
+### Key Components
+- **Framework**: 앱 개발을 위한 API 제공
+- **Runtime**: ART (Android Runtime)
+- **Libraries**: Native 라이브러리들
+- **Kernel**: Linux 기반 커널
+
+## Research Findings
+
+### Performance Insights
+- 시스템 최적화 포인트 식별
+- 메모리 관리 메커니즘 분석
+- 배터리 효율성 개선 방안
+
+### Security Features
+- Android 보안 모델 이해
+- SELinux 정책 분석
+- 앱 샌드박싱 메커니즘
+
+## Practical Applications
+
+### Custom ROM Development
+AOSP 지식을 활용한 커스텀 ROM 개발 가능성 탐구
+
+### System-level Apps
+시스템 레벨에서 동작하는 앱 개발 기법 연구
+
+## Future Directions
+
+1. **Advanced Topics**: Binder IPC, SurfaceFlinger 심화 분석
+2. **Performance Optimization**: 프로파일링 도구 활용법
+3. **Modern Android**: 최신 Android 버전 변경사항 추적
+
+## Resources
+
+- [Android Open Source Project](https://source.android.com/)
+- [AOSP Documentation](https://source.android.com/docs)
+- [Android Developers](https://developer.android.com/)
+
+---
+
+*AOSP 연구는 지속적으로 진행되며, 새로운 발견사항은 별도 포스트로 공유하겠습니다.*

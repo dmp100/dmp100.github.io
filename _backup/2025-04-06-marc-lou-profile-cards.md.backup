@@ -1,0 +1,113 @@
+---
+layout: post
+title: "Building Marc Lou-Style Profile Cards for Modern Web Design"
+date: 2025-04-06
+category: "Notes"
+project: "tech-blog"
+---
+
+# Building Marc Lou-Style Profile Cards for Modern Web Design
+
+## Introduction
+
+Marc Lou의 개인 브랜딩과 웹 디자인 접근법을 분석하고, 모던한 프로필 카드 컴포넌트를 구현하는 방법을 탐구합니다.
+
+## Marc Lou Design Philosophy
+
+### Key Principles
+- **Minimalism**: 불필요한 요소 제거
+- **Personal Branding**: 일관된 시각적 아이덴티티
+- **User Experience**: 직관적이고 명확한 인터랙션
+- **Performance**: 빠른 로딩과 반응성
+
+### Visual Characteristics
+- 깔끔한 타이포그래피
+- 적절한 여백 활용
+- 미묘한 그라데이션과 그림자
+- 반응형 디자인
+
+## Implementation
+
+### HTML Structure
+```html
+<div class="profile-card">
+  <div class="profile-image">
+    <img src="profile.jpg" alt="Profile" />
+  </div>
+  <h1 class="profile-name">Your Name</h1>
+  <div class="profile-meta">
+    <span class="location">📍 Location</span>
+    <span class="status">💻 Role</span>
+  </div>
+  <p class="profile-tagline">Your tagline here</p>
+  
+  <div class="profile-info">
+    <strong>What You Do</strong>
+    <p>Brief description of your work and interests.</p>
+  </div>
+</div>
+```
+
+### CSS Styling
+```css
+.profile-card {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 16px;
+  padding: 30px;
+  color: white;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
+}
+
+.profile-card:hover {
+  transform: translateY(-2px);
+}
+
+.profile-image img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid rgba(255,255,255,0.2);
+}
+```
+
+## Key Features
+
+### Responsive Design
+모든 디바이스에서 완벽하게 작동하는 반응형 레이아웃
+
+### Accessibility
+스크린 리더와 키보드 네비게이션 지원
+
+### Performance
+최적화된 이미지와 CSS로 빠른 로딩 속도
+
+### Customization
+다양한 테마와 스타일 옵션 제공
+
+## Best Practices
+
+### Design Guidelines
+1. **Consistency**: 일관된 디자인 시스템 유지
+2. **Hierarchy**: 명확한 정보 계층 구조
+3. **Contrast**: 충분한 색상 대비로 가독성 확보
+4. **Spacing**: 적절한 여백으로 시각적 균형
+
+### Technical Considerations
+- 의미있는 HTML 구조 사용
+- CSS 변수로 테마 관리
+- 이미지 최적화 필수
+- 접근성 가이드라인 준수
+
+## Resources
+
+- [Marc Lou Portfolio](https://marclou.com)
+- [Modern CSS Techniques](https://css-tricks.com)
+- [Web Accessibility Guidelines](https://www.w3.org/WAI/WCAG21/quickref/)
+- [Performance Best Practices](https://web.dev/performance/)
+
+---
+
+*모던 웹 디자인의 트렌드를 반영한 프로필 카드를 통해 사용자에게 강한 첫인상을 남길 수 있습니다.*
