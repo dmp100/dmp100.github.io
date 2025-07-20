@@ -228,3 +228,73 @@ sitemap: false
     padding: 24px !important;
   }
 }
+
+/* About Page Profile Center Alignment - NEW HTML LAYOUT TARGETING */
+.center-profile {
+  display: flex !important;
+  flex-direction: column !important;
+  text-align: center !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 100% !important;
+}
+
+.center-info {
+  text-align: center !important;
+  width: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+}
+
+.center-info h1 {
+  text-align: center !important;
+  margin: 0 auto !important;
+}
+
+.center-info p {
+  text-align: center !important;
+  margin: 0 auto !important;
+}
+
+.center-meta {
+  text-align: center !important;
+  width: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 4px !important;
+}
+
+.center-meta span {
+  text-align: center !important;
+  display: block !important;
+  width: 100% !important;
+}
+
+.about-avatar {
+  margin: 0 auto !important;
+  display: block !important;
+}
+
+/* Mobile About Profile Adjustments */
+@media (max-width: 900px) {
+  .center-profile {
+    padding: 20px 15px !important;
+  }
+  
+  .about-avatar {
+    width: 60px !important;
+    height: 60px !important;
+    margin-bottom: 12px !important;
+  }
+  
+  .center-info h1 {
+    font-size: 1.5rem !important;
+    margin-bottom: 4px !important;
+  }
+  
+  .center-meta span {
+    font-size: 0.9rem !important;
+  }
+}
