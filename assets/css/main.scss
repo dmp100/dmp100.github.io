@@ -5,11 +5,11 @@ sitemap: false
 @import "moving";
 @import url('https://fonts.googleapis.com/css?family=Bitter&display=swap');
 
-/* Project Hero Icon Styles - GitHub Pages Fix */
+/* Project Hero Icon Styles - Force Update v3 */
 .project-hero .hero-icon {
-  text-align: center;
-  padding-top: 40px;
-  margin-bottom: 30px;
+  text-align: center !important;
+  padding-top: 40px !important;
+  margin-bottom: 30px !important;
 }
 
 .project-hero .hero-icon .hero-icon-image {
@@ -24,13 +24,13 @@ sitemap: false
 
 .project-hero .hero-icon .hero-icon-emoji {
   font-size: 160px !important;
-  display: inline-block;
+  display: inline-block !important;
   padding: 35px !important;
   border-radius: 50px !important;
   background: rgba(255,255,255,0.15) !important;
   box-shadow: 0 15px 50px rgba(0,0,0,0.2) !important;
   border: 6px solid rgba(255,255,255,0.3) !important;
-  line-height: 1;
+  line-height: 1 !important;
   backdrop-filter: blur(15px) !important;
 }
 
@@ -38,18 +38,56 @@ sitemap: false
   padding-top: 0 !important;
 }
 
-/* Remove text shadows from project titles */
-.project-hero .project-title {
+/* FORCE Remove ALL text shadows - v3 */
+.project-hero h1,
+.project-hero .project-title,
+.project-hero p,
+.project-hero .project-description,
+.project-hero * {
   text-shadow: none !important;
   color: white !important;
 }
 
 .project-hero .project-description {
-  text-shadow: none !important;
   color: rgba(255,255,255,0.95) !important;
+  background: rgba(255,255,255,0.15) !important;
+  padding: 20px 30px !important;
+  border-radius: 16px !important;
+  backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255,255,255,0.2) !important;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1) !important;
+  font-weight: 500 !important;
 }
 
-/* Force remove all text shadows in hero section */
-.project-hero * {
-  text-shadow: none !important;
+/* Ensure buttons show up */
+.project-hero .hero-actions {
+  display: flex !important;
+  gap: 16px !important;
+  justify-content: center !important;
+  flex-wrap: wrap !important;
+  margin-top: 40px !important;
+}
+
+.project-hero .btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 14px 28px !important;
+  border-radius: 50px !important;
+  text-decoration: none !important;
+  font-weight: 600 !important;
+  font-size: 16px !important;
+  transition: all 0.3s ease !important;
+}
+
+.project-hero .btn-primary {
+  background: white !important;
+  color: #667eea !important;
+}
+
+.project-hero .btn-secondary {
+  background: rgba(255,255,255,0.1) !important;
+  color: white !important;
+  border: 2px solid rgba(255,255,255,0.3) !important;
+  backdrop-filter: blur(10px) !important;
 }
