@@ -54,12 +54,26 @@ moving:
    #   instance:
 
 # Build settings
-remote_theme: huangyz0918/moving # note, please use huangyz0918/moving if you want to publish to Github Pages.
+remote_theme: huangyz0918/moving
 
+# GitHub Pages 플러그인
 plugins:
- - jekyll-feed
- - jekyll-seo-tag
- - jekyll-sitemap
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-github-metadata
+  - jekyll-paginate
+
+# Markdown 설정
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM
+  hard_wrap: false
+
+# 페이지네이션
+paginate: 5
+paginate_path: "/posts/page:num/"
 
 # 이미지 경로 설정 (기존 설정에 추가)
 defaults:
