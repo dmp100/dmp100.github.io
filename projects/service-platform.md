@@ -8,8 +8,8 @@ emoji: "🚀"
 project_id: "service-platform"
 icon_image: "/assets/images/icons/service-platform-icon.png"
 order: 1
-demo_url: "#"
-github_url: "#"
+demo_url: "https://dmp100.github.io"
+github_url: "https://github.com/dmp100/dmp100.github.io"
 tech_stack:
   - "React 18"
   - "TypeScript"

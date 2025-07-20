@@ -41,8 +41,15 @@ sitemap: false
 /* Remove text shadows from project titles */
 .project-hero .project-title {
   text-shadow: none !important;
+  color: white !important;
 }
 
 .project-hero .project-description {
+  text-shadow: none !important;
+  color: rgba(255,255,255,0.95) !important;
+}
+
+/* Force remove all text shadows in hero section */
+.project-hero * {
   text-shadow: none !important;
 }
