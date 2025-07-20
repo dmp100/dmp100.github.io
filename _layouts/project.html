@@ -772,6 +772,52 @@ layout: default
   }
 }
 
+/* 태블릿 사이즈 (769px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .project-detail {
+    padding: 0 20px !important;
+    max-width: 100% !important;
+  }
+  
+  .project-hero {
+    padding: 20px 10px 40px 10px !important;
+    margin-bottom: 30px !important;
+  }
+  
+  .project-title {
+    font-size: 2.2rem !important;
+  }
+  
+  .project-description {
+    font-size: 1.1rem !important;
+    padding: 16px 20px !important;
+  }
+  
+  .hero-icon-image {
+    width: 120px !important;
+    height: 120px !important;
+  }
+  
+  .hero-icon-emoji {
+    font-size: 100px !important;
+    padding: 25px !important;
+  }
+  
+  .btn {
+    max-width: 250px !important;
+    padding: 12px 24px !important;
+    font-size: 14px !important;
+  }
+  
+  .section-title {
+    font-size: 1.8rem !important;
+  }
+  
+  .section-subtitle {
+    font-size: 1rem !important;
+  }
+}
+
 /* Notion Landing Card */
 .notion-landing-section {
   margin-bottom: 80px;
@@ -889,6 +935,38 @@ layout: default
     padding: 10px 16px !important;
     font-size: 0.8rem !important;
     border-radius: 30px !important;
+  }
+}
+
+/* 태블릿 사이즈에서의 Notion Landing Card */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .notion-landing-section {
+    margin-bottom: 60px !important;
+    padding: 0 20px !important;
+  }
+  
+  .notion-link-card {
+    padding: 1.5rem !important;
+    gap: 1.2rem !important;
+    max-width: 90% !important;
+    margin: 0 auto !important;
+  }
+  
+  .card-icon {
+    font-size: 2.5rem !important;
+  }
+  
+  .card-content h4 {
+    font-size: 1.3rem !important;
+  }
+  
+  .card-content p {
+    font-size: 0.95rem !important;
+  }
+  
+  .card-button {
+    padding: 12px 20px !important;
+    font-size: 0.9rem !important;
   }
 }
 </style>
