@@ -47,12 +47,13 @@ This space serves as my digital garden where I document my journey in technology
 </div>
 
 <style>
+/* FORCE UPDATE - Profile Center Alignment v1 */
 .profile-header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  text-align: center;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-direction: column !important;
+  text-align: center !important;
   margin-bottom: 40px;
   padding: 30px;
   background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
@@ -73,12 +74,14 @@ This space serves as my digital garden where I document my journey in technology
   margin: 0 0 8px 0;
   font-size: 2rem;
   color: #2c3e50;
+  text-align: center !important;
 }
 
 .location {
   margin: 0;
   color: #7f8c8d;
   font-size: 1.1rem;
+  text-align: center !important;
 }
 
 .connect-links {
@@ -109,7 +112,7 @@ This space serves as my digital garden where I document my journey in technology
   color: #667eea;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .profile-header {
     padding: 20px 15px !important;
     margin-bottom: 30px !important;
