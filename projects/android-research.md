@@ -8,6 +8,15 @@ emoji: "🤖"
 project_id: "android-research"
 order: 2
 github_url: "#"
+tech_stack:
+  - "Android SDK"
+  - "Kotlin"
+  - "Jetpack Compose"
+  - "AOSP"
+  - "Gradle"
+  - "Firebase"
+  - "Hilt"
+  - "Room"
 ---
 
 ## Research Focus

@@ -9,6 +9,14 @@ project_id: "tech-blog"
 order: 3
 demo_url: "https://dmp100.github.io"
 github_url: "https://github.com/dmp100/dmp100.github.io"
+tech_stack:
+  - "Jekyll"
+  - "Markdown"
+  - "GitHub Pages"
+  - "SCSS"
+  - "Liquid"
+  - "HTML5"
+  - "JavaScript"
 ---
 
 ## Blog Philosophy

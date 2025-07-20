@@ -7,6 +7,15 @@ category: "Business Analysis"
 emoji: "📈"
 project_id: "startup-studies"
 order: 4
+tech_stack:
+  - "Research"
+  - "Data Analysis"
+  - "Business Intelligence"
+  - "Excel"
+  - "Notion"
+  - "Google Analytics"
+  - "Surveys"
+  - "Interviews"
 ---
 
 ## Research Objective

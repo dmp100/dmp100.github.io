@@ -10,13 +10,30 @@ icon_image: "/assets/images/icons/service-platform-icon.png"
 order: 1
 demo_url: "#"
 github_url: "#"
-images:
-  - src: "https://via.placeholder.com/600x400/667eea/ffffff?text=Dashboard+Overview"
-    caption: "Main dashboard showing project overview and key metrics"
-  - src: "https://via.placeholder.com/600x400/764ba2/ffffff?text=User+Interface"
-    caption: "Clean and intuitive user interface design"
-  - src: "https://via.placeholder.com/600x400/4CAF50/ffffff?text=Mobile+View"
-    caption: "Responsive mobile design for on-the-go access"
+tech_stack:
+  - "React 18"
+  - "TypeScript"
+  - "Node.js"
+  - "MongoDB"
+  - "Tailwind CSS"
+  - "Docker"
+  - "AWS"
+  - "JWT"
+screenshots:
+  - image: "/assets/images/projects/service-platform/dashboard.png"
+    title: "Main Dashboard"
+    description: "Overview of the main dashboard with key metrics and navigation"
+  - image: "/assets/images/projects/service-platform/user-management.png"
+    title: "User Management"
+    description: "Complete user management interface with role-based access"
+  - youtube: "8GlQVlvgYBA"
+    title: "Live Demo"
+    description: "Interactive demo showing key features and functionality"
+    type: "video"
+  - image: "/assets/images/projects/service-platform/mobile-responsive.png"
+    title: "Mobile Responsive"
+    description: "Fully responsive design optimized for mobile devices"
+    type: "mobile"
 ---
 
 ## Project Overview
