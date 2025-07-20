@@ -53,6 +53,12 @@ moving:
    # - username:
    #   instance:
 
+# Force CSS regeneration
+incremental: false
+sass:
+  style: compressed
+  sourcemap: never
+
 # Build settings
 remote_theme: huangyz0918/moving
 
