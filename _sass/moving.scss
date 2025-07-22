@@ -186,6 +186,62 @@ $on-large: $on-laptop !default;
   padding: 40px 20px;
 }
 
+/* About Back Button */
+.about-back-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #667eea;
+  padding: 8px 16px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.8);
+}
+
+.back-button:hover {
+  background: #667eea;
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+@media (max-width: 768px) {
+  .about-back-btn {
+    position: static;
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+  }
+  
+  .back-button {
+    font-size: 13px;
+    padding: 6px 12px;
+    background: #f8f9fa;
+    color: #667eea;
+    border: 1px solid #e5e5e5;
+    box-shadow: none;
+    backdrop-filter: none;
+  }
+  
+  .back-button:hover {
+    background: #e9ecef;
+    transform: none;
+    box-shadow: none;
+  }
+}
+
 /* Project Showcase Cards */
 .projects-grid {
   display: grid;
@@ -585,9 +641,7 @@ $on-large: $on-laptop !default;
 }
 
 .about-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+  position: relative;
   margin-bottom: 40px;
   padding-bottom: 30px;
   border-bottom: 2px solid #f0f0f0;
