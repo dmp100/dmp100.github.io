@@ -65,6 +65,9 @@ sass:
 # Build settings
 remote_theme: huangyz0918/moving
 
+# 미래 날짜 포스트 표시 허용
+future: true
+
 # GitHub Pages 플러그인
 plugins:
   - jekyll-feed
