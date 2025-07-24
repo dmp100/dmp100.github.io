@@ -45,6 +45,7 @@ title: "Jekyll 블로그 커스터마이징 가이드"
 description: "Jekyll 블로그를 커스터마이징하는 방법과 유용한 팁들을 정리합니다."
 date: 2025-07-23
 image: /assets/images/2025-07-23-jekyll-customizing.png
+project: "service-platform"
 ---
 ```
 
