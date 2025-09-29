@@ -4,7 +4,7 @@ title: "Yap, I finally made up my mind"
 description: "My fucking plans"
 date: 2025-09-01
 image: /assets/images/2025-09-01-made-up-mind.png
-project: "frieren"
+project: "Project-Frieren"
 ---
 
 These days, I've been studying linear algebra.
