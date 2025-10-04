@@ -29,6 +29,12 @@ This space serves as my digital garden where I document my journey in technology
 - **Notes**: Quick thoughts and learnings from daily development
 - **Analysis**: Breaking down interesting problems and their solutions
 
+## 🚀 Watch me level up
+
+<div class="notion-embed">
+  <iframe src="https://mature-date-b7d.notion.site/ebd/27dd39becd34810381e4fef816ee3a7d" width="100%" height="600" frameborder="0" allowfullscreen></iframe>
+</div>
+
 ## 🤝 Let's Connect
 
 <div class="connect-links">
@@ -126,7 +132,28 @@ This space serves as my digital garden where I document my journey in technology
   color: #667eea;
 }
 
+.notion-embed {
+  margin: 40px 0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.notion-embed iframe {
+  display: block;
+  border: none;
+  background: #fff;
+}
+
 @media (max-width: 900px) {
+  .notion-embed {
+    margin: 30px 0;
+  }
+  
+  .notion-embed iframe {
+    height: 500px;
+  }
+  
   .profile-header {
     padding: 20px 15px !important;
     margin-bottom: 30px !important;
