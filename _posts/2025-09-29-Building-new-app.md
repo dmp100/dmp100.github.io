@@ -19,53 +19,45 @@ and Atracker ?
 
 (Not an ad btw)
 
-one is telling my schedule, the other is tracking my dayroutine however I have to change it manually
 
-앱 두개를 쓰고 있는데, 하나는 일정을 알려주거나 반복해주는 체크리스트 앱이고 하나는 하루 루틴을 추적하는 앱인데 얘는 수동임
+## The Problem
 
+I'm currently using two apps: one is a checklist app that manages my schedule and recurring tasks, and the other is ATracker, which tracks my daily routine but requires manual input.
 
-Every time I open Atracker, I change gym to study, study to gaming... so bothering me
+Every time I open ATracker, I have to manually change "gym" to "study," "study" to "gaming," etc. It's tedious. Once I fall behind, there's no catching up.
 
-이거 두개 쓰고있는데 매번 Atracker에서 운동에서 공부로 바꾸고 이러기 귀찮고 한번 밀리니까 답이없는거임 
+But Reminder isn't much better—when tasks pile up, it feels hopeless. Both apps feel like just that: tools, nothing more.
 
-But same as Reminder, mytasks pile up
-It's feels like just a 'tool' 
+So I started thinking about something new.
 
-so I think about something new
+## The Core Philosophy
 
-그렇다고 Reminder도 똑같이밀리면 답없는거같고 뭔가 진짜 말 그대로 '툴' 느낌만 나서
+I believe a person is defined by their words and actions. What if we could objectively visualize this?
 
-새로운걸 생각해봄
+Here's a simple example: I schedule "coding study" for 1-2 PM for lunch break, but it gets postponed for three weeks straight. In reality, during that time, I'm gaming or watching YouTube.
 
-나는 개인적으로 본인의 말과 행동의 그사람을 정의한다고 생각함.
-이걸 객관적으로 볼 수 있게 해준다면 ?
+The thing is, I vaguely know this happens, but I don't record it. I rely on memory alone. And memory is unreliable—cognitive distortion leads to misinterpretation.
 
-단순한 예시는 이거임
-내가 오늘 점심 13~14시에 코딩공부 1시간 하기 했는데 3주동안 밀리고
-막상 보면 그때 게임하거나 유튜브본다던가
+This app aims to break through that.
 
-근데 이걸 막연하게만 알지 기록은 안한단말임 ? 기억에만 의존하고
-막상 기억도 까고보면 인지왜곡있어서 이상하게오해함
+## The Solution
 
-이거를 타파해줄 앱이라는거임
+Users input their daily schedule, then mark whether they actually completed each task: O, X, or △. An algorithm or AI collects this data over a period of time.
 
-뭔소리냐면, 사용자가 하루 일정을 입력하고 실제 그 시간에 그 행동을 햇는지 O X ▵ 를 체크해서 알고리즘 혹은 AI가 그 데이터를 일정 기간 받고,
+Later, it proactively suggests predictions for empty time slots based on patterns. In other words, it compares your planned schedule with your actual behavior, clearly showing you how you're really living.
 
-나중에 빈 시간이라든가 예측되는 부분에 미리 보여주는거임 
-한마디로 사용자의 일상, 목표하는 플랜 데이터를 받고 비교분석해서 자신이 어케살고있는지 명확하게 보여주는 앱인거임
+Additional features I'm considering: breaking down tasks into smaller chunks, Pomodoro timer integration, and more.
 
-여기에 가능하면 추가로 일정을 잘게 쪼갠다거나 뽀모도르라든가 등등 추가기능은 생각중임 
+## Tech Stack
 
-이거는 안드로이드로만 하면 좋겠지만 나는 아이폰유저기때문에 코틀린 멀티플랫폼을 쓸거임
+Ideally, I'd prefer Android-only development, but since I'm an iPhone user, I'll use Kotlin Multiplatform.
 
-물론 출시까지 생각하고 작업을 할거고 AI기능에는 구독제를 쓸까 생각중
+I'm planning this with a full release in mind, and I'm thinking about implementing a subscription model for AI features.
 
-일단 Figma로 프로토타입 생각해보면서 계속 진행해볼 예정임
+For now, I'll prototype in Figma and iterate from there.
 
-Social Network 보셈 이 영화 진짜 Building 쥑임
+Watch *The Social Network*—that film absolutely nails the building process.
 
-뭐 나온거 있으면 다시옴
+I'll update when there's progress.
 
-아 그리고 프리렌도 어케할지 기획중임
-
-
+Oh, and I'm also planning something with Frieren.
