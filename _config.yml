@@ -1,100 +1,57 @@
-title: . # The title of the blog
-author: Kyuhyun Sung # Your name
-email: dmp100@naver.com # your email shown in the footer
-url: "https://dmp100.github.io" # this is your site's root address.
-description: > # this means to ignore newlines until "show_excerpts:"
- Making My Own Things
-favicon: "./favicon.ico" # set the favicon of the site
-show_excerpts: false # set to true to show excerpts on the homepage
+# Site settings
+title: .
+author: Kyuhyun Sung
+email: dmp100@naver.com
+url: "https://dmp100.github.io"
+description: >
+  Making My Own Things
 
 # SEO settings
 lang: "ko-KR"
 baseurl: ""
 
-# Environment settings
-ENV: JEKYLL_ENV
+# jekyll-theme-console settings
+style: dark  # dark, light, hacker, nord
+listen_for_clients_preferred_style: false
+disable_google_fonts: true  # Google Fonts 비활성화
 
-# Force production URL
-url: "https://dmp100.github.io"
-baseurl: ""
+# Header navigation
+header_pages:
+  - index.md
+  - about.md
+  - all-posts.md
+  - all-projects.md
 
-# Moving date format
-# refer to https://shopify.github.io/liquid/filters/date/ if you want to customize this
-moving:
- avatar_url: "https://raw.githubusercontent.com/dmp100/gobongbab/main/lum.gif" # avatar in about page
- about_you: Mechanic, Developer, and,,, # short description about you in about page
- date_format: "%y.%m.%d" # date format of posts in home page
- back_to: "Home" # In the post page, you have a back button above the title, you can custom the text by yourself.
+# Footer
+footer: 'Making My Own Things | Theme by <a href="https://github.com/b2a3e8/jekyll-theme-console">jekyll-theme-console</a>'
 
- # generate social links in about page.
- social_links:
-   # twitter:
-   github: dmp100
-   velog: dmp100
-   # rss: RSS
-   # dribbble:
-   # facebook: 
-   # flickr:
-   # instagram:
-   linkedin: 규현-성-1a16b629a
-   # pinterest:
-   # youtube:
-   # youtube_channel:
-   # youtube_channel_name:
-   # telegram:
-   # googleplus:
-   # microdotblog:
-   # reddit:
-   notion: "https://mature-date-b7d.notion.site/162d39becd348035b113fef57f4d85b4?pvs=4" 
-   # Mastodon instances
-   # mastodon:
-   # - username:
-   #   instance:
-   # - username:
-   #   instance:
-
-# Force complete rebuild - v3
-incremental: false
-profile: false
-sass:
-  style: expanded
-  sourcemap: false
-  load_paths:
-    - _sass
-
-# Build settings
-remote_theme: huangyz0918/moving
-
-# 미래 날짜 포스트 표시 허용
-future: true
-
-# GitHub Pages 플러그인
+# Plugins
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-sitemap
 
-# Markdown 설정
+# Markdown settings
 markdown: kramdown
 highlighter: rouge
 kramdown:
   input: GFM
   hard_wrap: false
 
-# 이미지 경로 설정 (기존 설정에 추가)
-defaults:
- - scope:
-     path: "assets/images"
-   values:
-     image: true
+# Build settings
+future: true
+incremental: false
 
-# Jekyll 빌드 시 포함할 파일들
-include:
-  - ads.txt
+# Sass settings
+sass:
+  style: compressed
 
-# Sitemap에서 제외할 파일들
+# Include files
+# include:
+#   - ads.txt
+
+# Exclude from build
 exclude:
-  - google2b89ef6982bc2057.html
   - .DS_Store
   - .git
   - .github
@@ -107,6 +64,7 @@ exclude:
   - README.md
   - moving.gemspec
   - _backup/
+  - _backup_old_theme/
   - "*.backup"
   - vendor/
   - node_modules/
