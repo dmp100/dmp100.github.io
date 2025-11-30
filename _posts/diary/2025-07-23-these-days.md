@@ -4,6 +4,7 @@ title: "Long Time No See"
 description: "It's been a while"
 date: 2025-07-23
 image: /assets/images/2025-07-23-03-09-34.png
+categories: diary
 ---
 
 Sup guys.

@@ -1,9 +1,104 @@
 # https://dmp100.github.io/
 
-Execute
-```
+## Quick Start
+
+Execute:
+```bash
 bundle exec jekyll serve
 ```
+
+Visit: `http://localhost:4000`
+
+---
+
+# Blog Structure
+
+## Folder Organization
+
+```
+_posts/
+├── diary/          # Personal thoughts and daily musings
+├── ideas/          # Project ideas and concepts
+├── language/       # Language learning notes
+└── whatifeel/      # Personal feelings and reviews
+```
+
+## Creating New Category
+
+### Using Script (Recommended)
+
+```bash
+# Basic usage (auto title/description)
+./new-category.sh foldername
+
+# With custom title and description
+./new-category.sh foldername "Category Title" "Category description"
+
+# Example
+./new-category.sh tutorials "Tutorials" "Step-by-step guides"
+```
+
+**What it does:**
+- Creates `_posts/foldername/` folder
+- Creates `pages/foldername.md` page
+- Automatically appears in All Posts
+
+### Manual Method
+
+1. Create folder: `mkdir _posts/new-category`
+2. Create page: `pages/new-category.md`
+```yaml
+---
+layout: category
+title: "Category Name"
+category: new-category
+description: "Category description"
+permalink: /new-category/
+---
+```
+3. Add to `_config.yml`:
+```yaml
+category_order:
+  - new-category  # Add here for custom order
+  - ideas
+  - diary
+```
+
+## Category Display Order
+
+Edit `_config.yml` to change order:
+
+```yaml
+# Category display order
+category_order:
+  - ideas        # Shows first
+  - diary        # Shows second
+  - language     # Shows third
+  - whatifeel    # Shows last
+```
+
+**Note:** Categories not in this list will appear after, in alphabetical order.
+
+## Writing Posts
+
+Create file: `_posts/category/YYYY-MM-DD-title.md`
+
+```yaml
+---
+layout: post
+title: "Post Title"
+date: 2025-11-30
+categories: category-name  # Must match folder name
+project: "project-id"      # Optional: link to project
+---
+
+Your content here...
+```
+
+**Important:**
+- File must be in correct category folder
+- `categories` must match folder name
+- Date format: YYYY-MM-DD in filename
 
 ---
 # Personal Portfolio & Blog

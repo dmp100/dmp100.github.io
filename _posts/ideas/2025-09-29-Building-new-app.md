@@ -1,10 +1,10 @@
 ---
 layout: post
 title: "Build, Shiping and Showing"
-description: "BeYou Start"
 date: 2025-09-29
-image: /assets/images/2025-09-01-made-up-mind.png
+categories: ideas
 project: "beyou"
+image: /assets/images/2025-09-01-made-up-mind.png
 ---
 
 

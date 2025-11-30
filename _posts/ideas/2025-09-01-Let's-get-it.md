@@ -1,10 +1,10 @@
 ---
 layout: post
 title: "Yap, I finally made up my mind"
-description: "My fucking plans"
 date: 2025-09-01
+categories: ideas
+project: "frieren"
 image: /assets/images/2025-09-01-made-up-mind.png
-project: "Project-Frieren"
 ---
 
 These days, I've been studying linear algebra.

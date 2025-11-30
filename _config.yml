@@ -18,9 +18,9 @@ disable_google_fonts: true  # Google Fonts 비활성화
 # Header navigation
 header_pages:
   - index.md
-  - about.md
-  - all-posts.md
-  - all-projects.md
+  - pages/about.md
+  - pages/all-posts.md
+  - pages/all-projects.md
 
 # Footer
 footer: 'Making My Own Things | Theme by <a href="https://github.com/b2a3e8/jekyll-theme-console">jekyll-theme-console</a>'
@@ -70,3 +70,10 @@ exclude:
   - node_modules/
   - .sass-cache/
   - .bundle/
+
+# Category display order
+category_order:
+  - ideas
+  - diary
+  - language
+  - whatifeel

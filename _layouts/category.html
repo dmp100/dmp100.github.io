@@ -1,0 +1,276 @@
+---
+layout: default
+---
+
+<div class="category-page">
+  <div class="post-back">
+    <a class="black-link" href="{{ '/all-posts/' | relative_url }}">
+      ← Back to All Posts
+    </a>
+  </div>
+  
+  <div class="category-header">
+    <h1 class="category-title">📁 {{ page.category }}/</h1>
+    <p class="category-description">{{ page.description }}</p>
+  </div>
+  
+  <!-- Posts Tree -->
+  <div class="posts-tree">
+    <div class="tree-root">_posts/{{ page.category }}/</div>
+    
+    {% assign all_posts = site.categories[page.category] %}
+    {% if all_posts and all_posts.size > 0 %}
+      {% assign all_posts = all_posts | sort: 'date' | reverse %}
+      {% assign folder_map = "" | split: "" %}
+    
+    {% comment %} 1단계: 모든 폴더 경로와 포스트 매핑 {% endcomment %}
+    {% for post in all_posts %}
+      {% assign sub_path = "" %}
+      {% assign started = false %}
+      {% for cat in post.categories %}
+        {% if started %}
+          {% if sub_path == "" %}
+            {% assign sub_path = cat %}
+          {% else %}
+            {% assign sub_path = sub_path | append: "/" | append: cat %}
+          {% endif %}
+        {% endif %}
+        {% if cat == page.category %}
+          {% assign started = true %}
+        {% endif %}
+      {% endfor %}
+      
+      {% comment %} 폴더 경로를 키로 포스트 저장 {% endcomment %}
+      {% assign found = false %}
+      {% for item in folder_map %}
+        {% if item.path == sub_path %}
+          {% assign found = true %}
+        {% endif %}
+      {% endfor %}
+      {% unless found %}
+        {% assign new_item = "" | split: "" %}
+        {% assign folder_map = folder_map | push: sub_path %}
+      {% endunless %}
+    {% endfor %}
+    
+    {% comment %} 2단계: 폴더 구조 출력 {% endcomment %}
+    {% assign sorted_paths = folder_map | uniq | sort %}
+    {% assign displayed_folders = "" | split: "" %}
+    
+    {% for folder_path in sorted_paths %}
+      {% if folder_path != "" %}
+        {% assign parts = folder_path | split: "/" %}
+        {% assign depth = parts.size %}
+        
+        {% comment %} 각 깊이별로 폴더 표시 {% endcomment %}
+        {% for i in (1..depth) %}
+          {% assign current_parts = "" | split: "" %}
+          {% for j in (1..i) %}
+            {% assign idx = j | minus: 1 %}
+            {% assign current_parts = current_parts | push: parts[idx] %}
+          {% endfor %}
+          {% assign current_path = current_parts | join: "/" %}
+          
+          {% unless displayed_folders contains current_path %}
+            {% assign displayed_folders = displayed_folders | push: current_path %}
+            {% assign indent = i | minus: 1 | times: 20 %}
+            {% assign folder_name = parts[idx] %}
+            
+            <div class="tree-folder" style="padding-left: {{ indent }}px;">
+              {% if i > 1 %}
+                {% for k in (1..i) %}
+                  {% if forloop.first == false and forloop.last == false %}
+                    <span class="tree-indent">│   </span>
+                  {% endif %}
+                {% endfor %}
+              {% endif %}
+              <span class="tree-icon">├──</span>
+              <span class="folder-name">📁 {{ folder_name }}/</span>
+            </div>
+          {% endunless %}
+        {% endfor %}
+        
+        {% comment %} 해당 폴더의 포스트 출력 {% endcomment %}
+        {% for post in all_posts %}
+          {% assign post_path = "" %}
+          {% assign started = false %}
+          {% for cat in post.categories %}
+            {% if started %}
+              {% if post_path == "" %}
+                {% assign post_path = cat %}
+              {% else %}
+                {% assign post_path = post_path | append: "/" | append: cat %}
+              {% endif %}
+            {% endif %}
+            {% if cat == page.category %}
+              {% assign started = true %}
+            {% endif %}
+          {% endfor %}
+          
+          {% if post_path == folder_path %}
+            {% assign indent = depth | times: 20 %}
+            <div class="tree-post" style="padding-left: {{ indent }}px;">
+              {% for k in (1..depth) %}
+                {% if forloop.last == false %}
+                  <span class="tree-indent">│   </span>
+                {% endif %}
+              {% endfor %}
+              <span class="tree-icon">├──</span>
+              <span class="post-date">{{ post.date | date: "%y.%m.%d" }}</span>
+              <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+            </div>
+          {% endif %}
+        {% endfor %}
+      {% else %}
+        {% comment %} 루트 레벨 포스트 {% endcomment %}
+        {% for post in all_posts %}
+          {% assign post_path = "" %}
+          {% assign started = false %}
+          {% for cat in post.categories %}
+            {% if started %}
+              {% if post_path == "" %}
+                {% assign post_path = cat %}
+              {% else %}
+                {% assign post_path = post_path | append: "/" | append: cat %}
+              {% endif %}
+            {% endif %}
+            {% if cat == page.category %}
+              {% assign started = true %}
+            {% endif %}
+          {% endfor %}
+          
+          {% if post_path == "" %}
+            <div class="tree-post">
+              <span class="tree-icon">├──</span>
+              <span class="post-date">{{ post.date | date: "%y.%m.%d" }}</span>
+              <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+            </div>
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+    {% endfor %}
+    {% else %}
+      <div class="tree-post">
+        <span class="post-date">No posts in this category yet.</span>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+<style>
+.category-page {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.category-header {
+  margin-bottom: 30px;
+}
+
+.category-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #4ec9b0;
+  margin-bottom: 10px;
+}
+
+.category-description {
+  font-size: 1.1rem;
+  color: #808080;
+}
+
+.posts-tree {
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  line-height: 1.8;
+  margin: 30px 0;
+  padding: 25px;
+  background: #1e1e1e;
+  border-radius: 8px;
+  color: #d4d4d4;
+}
+
+.tree-root {
+  color: #569cd6;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.tree-folder {
+  margin: 2px 0;
+  display: flex;
+  align-items: baseline;
+}
+
+.folder-name {
+  color: #4ec9b0;
+  font-weight: bold;
+}
+
+.tree-indent {
+  color: #808080;
+  margin-right: 5px;
+}
+
+.tree-post {
+  margin: 3px 0;
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+
+.tree-icon {
+  color: #808080;
+  margin-right: 5px;
+  flex-shrink: 0;
+}
+
+.post-date {
+  color: #ce9178;
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+
+.post-link {
+  color: #9cdcfe;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.post-link:hover {
+  color: #4fc3f7;
+  text-decoration: underline;
+}
+
+/* Light theme support */
+@media (prefers-color-scheme: light) {
+  .category-title {
+    color: #008080;
+  }
+  
+  .posts-tree {
+    background: #f5f5f5;
+    color: #333;
+  }
+  
+  .tree-root {
+    color: #0066cc;
+  }
+  
+  .folder-name {
+    color: #008080;
+  }
+  
+  .post-date {
+    color: #a31515;
+  }
+  
+  .post-link {
+    color: #0066cc;
+  }
+  
+  .post-link:hover {
+    color: #0052a3;
+  }
+}
+</style>
