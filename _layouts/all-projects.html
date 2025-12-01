@@ -2,37 +2,80 @@
 layout: default
 ---
 
+<link rel="stylesheet" href="{{ '/assets/css/all-projects.css' | relative_url }}">
+
 <div class="all-projects-page">
   <div class="post-back">
     <a class="black-link" href="{{ '/' | relative_url }}">
-      ← Back to Home
+      cd ..
     </a>
   </div>
-  
-  <div class="projects-header">
-    <h1 class="projects-title">All Projects</h1>
-    <p class="projects-description">A complete overview of my development projects and research initiatives.</p>
-  </div>
-  
-  <!-- Projects Grid -->
-  <div class="projects-grid">
-    {% assign all_projects = site.pages | where: 'layout', 'project' | sort: 'order' %}
-    {% for project in all_projects %}
-    <div class="project-card-large" onclick="location.href='{{ project.url | relative_url }}'">
-      <div class="project-header">
-        <div class="project-icon">
-          {% if project.icon_image %}
-            <img src="{{ project.icon_image }}" alt="{{ project.title }} icon" style="width: 40px; height: 40px; border-radius: 8px;">
-          {% else %}
-            {{ project.emoji | default: "🚀" }}
-          {% endif %}
+
+  <div class="terminal-prompt">[규현@arch ~/projects]$ exa --long --header</div>
+
+  {% assign all_projects = site.pages | where: 'layout', 'project' | sort: 'order' %}
+  {% assign active_projects = all_projects | where: 'status', 'active' %}
+  {% assign inactive_projects = all_projects | where: 'status', 'inactive' %}
+
+  {% if active_projects.size > 0 %}
+  <div class="project-section active-section">
+    <div class="section-title">Active Projects ({{ active_projects.size }})</div>
+    
+    {% for project in active_projects %}
+      {% assign project_posts = site.posts | where: "project", project.project_id %}
+      {% if project_posts.size > 0 %}
+        {% assign latest_post = project_posts | sort: 'date' | reverse | first %}
+        {% assign last_date = latest_post.date | date: "%b %d" %}
+      {% else %}
+        {% assign last_date = "—" %}
+      {% endif %}
+      
+      <div class="exa-container">
+        <div class="exa-line active">
+          <span class="exa-perms">drwxr-xr-x</span>
+          <span class="exa-user">규현</span>
+          <span class="exa-size">{{ project_posts.size }}</span>
+          <span class="exa-date">{{ last_date }}</span>
+          <a href="{{ project.url | relative_url }}" class="exa-name">{{ project.title | downcase }}/</a>
         </div>
-        <div class="project-info">
-          <h3 class="project-name">{{ project.title }}</h3>
-          <p class="project-description-gray">{{ project.description }}</p>
+        <div class="exa-desc">
+          # {{ project.description }}
         </div>
       </div>
-    </div>
     {% endfor %}
   </div>
+  {% endif %}
+
+  {% if inactive_projects.size > 0 %}
+  <div class="section-divider">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</div>
+  {% endif %}
+
+  {% if inactive_projects.size > 0 %}
+  <div class="project-section inactive-section">
+    <div class="section-title">Inactive Projects ({{ inactive_projects.size }})</div>
+    
+    {% for project in inactive_projects %}
+      {% assign project_posts = site.posts | where: "project", project.project_id %}
+      {% if project_posts.size > 0 %}
+        {% assign latest_post = project_posts | sort: 'date' | reverse | first %}
+        {% assign last_date = latest_post.date | date: "%b %d" %}
+      {% else %}
+        {% assign last_date = "—" %}
+      {% endif %}
+      
+      <div class="exa-container">
+        <div class="exa-line inactive">
+          <span class="exa-perms">drwxr-xr-x</span>
+          <span class="exa-user">규현</span>
+          <span class="exa-size">{{ project_posts.size }}</span>
+          <span class="exa-date">{{ last_date }}</span>
+          <a href="{{ project.url | relative_url }}" class="exa-name">{{ project.title | downcase }}/</a>
+        </div>
+        <div class="exa-desc inactive">
+          # {{ project.description }}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  {% endif %}
 </div>

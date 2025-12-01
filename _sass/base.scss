@@ -138,3 +138,37 @@ img {
   display: block;   // 중앙 정렬을 위해
   margin: 1rem auto; // 상하 여백 + 중앙 정렬
 }
+
+/**
+ * Project Page Styles
+ */
+.project-page .neofetch-layout {
+  display: flex !important;
+  gap: 40px !important;
+  margin-top: 40px !important;
+  align-items: flex-start !important;
+  flex-direction: row !important;
+}
+
+.project-page .neofetch-left {
+  flex: 0 0 280px !important;
+  text-align: center !important;
+}
+
+.project-page .neofetch-right {
+  flex: 1 !important;
+  min-width: 0 !important;
+}
+
+@media (max-width: 767px) {
+  .project-page .neofetch-layout {
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  
+  .project-page .neofetch-left {
+    flex: none !important;
+    width: 100% !important;
+    max-width: 280px !important;
+  }
+}

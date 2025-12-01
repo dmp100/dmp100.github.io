@@ -1,987 +1,144 @@
 ---
 layout: default
-# FORCE UPDATE v5 - 2025-07-21 - REMOVE DUPLICATE CARDS
 ---
 
-<div class="project-detail">
-  <!-- Navigation -->
-  <div class="project-nav">
-    <a class="back-link" href="{{ '/' | relative_url }}">
-      ← Back to Home
+<link rel="stylesheet" href="{{ '/assets/css/project.css' | relative_url }}">
+
+<div class="project-page">
+  <div class="post-back">
+    <a class="black-link" href="{{ '/projects/' | relative_url }}">
+      cd ..
     </a>
   </div>
   
-  <!-- Hero Section -->
-  <div class="project-hero">
-    <!-- Large Icon Inside Hero -->
-    <div class="hero-icon">
-      {% if page.icon_image %}
-        <img src="{{ page.icon_image }}" alt="{{ page.title }} icon" class="hero-icon-image">
-      {% else %}
-        <div class="hero-icon-emoji">{{ page.emoji | default: "🚀" }}</div>
-      {% endif %}
-    </div>
+  <!-- neofetch 스타일 레이아웃 -->
+  <div class="neofetch-layout">
+    {% if page.icon_image %}
+      <div class="neofetch-left">
+        <img src="{{ page.icon_image }}" alt="{{ page.title }}" class="project-main-image">
+      </div>
+    {% endif %}
     
-    <div class="hero-content">
-      <h1 class="project-title">{{ page.title }}</h1>
-      <p class="project-description">{{ page.description }}</p>
+    <div class="neofetch-right">
+      <div class="neofetch-header">{{ page.title | downcase }}@dmp100</div>
+      <div class="neofetch-divider">─────────────────────────</div>
       
-      {% if page.demo_url and page.demo_url != "#" or page.github_url and page.github_url != "#" %}
-      <div class="hero-actions">
-        {% if page.demo_url and page.demo_url != "#" %}
-          <a href="{{ page.demo_url }}" target="_blank" class="btn btn-primary">
-            🚀 Live Demo
-          </a>
+      <div class="neofetch-info">
+        <div class="info-line">
+          <span class="info-label">Description:</span>
+          <span class="info-value">{{ page.description }}</span>
+        </div>
+        
+        {% assign project_posts = site.posts | where: "project", page.project_id %}
+        <div class="info-line">
+          <span class="info-label">Posts:</span>
+          <span class="info-value">{{ project_posts.size }}</span>
+        </div>
+        
+        {% if page.status %}
+          <div class="info-line">
+            <span class="info-label">Status:</span>
+            {% if page.status == "active" %}
+              <span class="info-value active">Active</span>
+            {% else %}
+              <span class="info-value inactive">Inactive</span>
+            {% endif %}
+          </div>
         {% endif %}
-        {% if page.github_url and page.github_url != "#" %}
-          <a href="{{ page.github_url }}" target="_blank" class="btn btn-secondary">
-            💻 View Code
-          </a>
+        
+        {% if project_posts.size > 0 %}
+          {% assign latest_post = project_posts | sort: 'date' | reverse | first %}
+          
+          <div class="info-line">
+            <span class="info-label">Last Update:</span>
+            <span class="info-value">{{ latest_post.date | date: "%Y-%m-%d" }}</span>
+          </div>
         {% endif %}
       </div>
-      {% endif %}
     </div>
   </div>
-
-  <!-- Screenshots Section -->
-  <div class="screenshots-section">
-    <h2 class="section-title">📸 Screenshots & Demos</h2>
-    <p class="section-subtitle">Visual showcase of the project in action</p>
-    
-    {% if page.screenshots and page.screenshots.size > 0 %}
-      <div class="screenshots-gallery">
-        {% for screenshot in page.screenshots %}
-          <div class="screenshot-item {% if screenshot.type %}screenshot-{{ screenshot.type }}{% endif %}">
-            {% if screenshot.youtube %}
-              <div class="youtube-container">
-                <iframe 
-                  src="https://www.youtube.com/embed/{{ screenshot.youtube }}?rel=0&modestbranding=1" 
-                  title="{{ screenshot.title }}"
-                  frameborder="0" 
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                  allowfullscreen
-                  class="youtube-video">
-                </iframe>
-                <div class="video-badge">🎥 Video Demo</div>
-              </div>
-            {% else %}
-              <img src="{{ screenshot.image }}" alt="{{ screenshot.title }}" class="screenshot-image">
-            {% endif %}
-            <div class="screenshot-overlay">
-              <h3 class="screenshot-title">{{ screenshot.title }}</h3>
-              <p class="screenshot-description">{{ screenshot.description }}</p>
+  
+  <!-- 아래 섹션들 -->
+  <div class="project-sections">
+    <!-- 유튜브 영상 -->
+    {% if page.screenshots %}
+      {% for screenshot in page.screenshots %}
+        {% if screenshot.youtube %}
+          <div class="video-section">
+            <div class="section-header">📺 {{ screenshot.title }}</div>
+            <div class="youtube-container">
+              <iframe 
+                src="https://www.youtube.com/embed/{{ screenshot.youtube }}?rel=0&modestbranding=1" 
+                title="{{ screenshot.title }}"
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+              </iframe>
             </div>
+            {% if screenshot.description %}
+              <p class="video-desc">{{ screenshot.description }}</p>
+            {% endif %}
           </div>
-        {% endfor %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+    
+    <!-- 링크 -->
+    <div class="links-section">
+      <div class="section-header">🔗 Links</div>
+      <div class="links-grid">
+        {% if page.demo_url and page.demo_url != "#" %}
+          <a href="{{ page.demo_url }}" target="_blank" class="link-item">
+            <span class="link-icon">🚀</span> Live Demo
+          </a>
+        {% endif %}
+        
+        {% if page.github_url and page.github_url != "#" %}
+          <a href="{{ page.github_url }}" target="_blank" class="link-item">
+            <span class="link-icon">💻</span> GitHub
+          </a>
+        {% endif %}
+        
+        {% if page.notion_landing %}
+          <a href="{{ page.notion_landing.url }}" target="_blank" class="link-item">
+            <span class="link-icon">
+              {% case page.notion_landing.type %}
+                {% when 'notion' %}📋
+                {% when 'docs' %}📚
+                {% when 'website' %}🔗
+                {% else %}📋
+              {% endcase %}
+            </span>
+            {{ page.notion_landing.title }}
+          </a>
+        {% endif %}
       </div>
-    {% else %}
-      <div class="screenshot-placeholder">
-        <div class="placeholder-content">
-          <div class="placeholder-icon">🖼️</div>
-          <h3>Screenshots Coming Soon</h3>
-          <p>High-quality images and interactive demos will be added here</p>
+    </div>
+    
+    <!-- 개발 로그 -->
+    {% if project_posts.size > 0 %}
+      <div class="logs-section">
+        <div class="section-header">📝 Development Logs</div>
+        <div class="logs-tree">
+          {% assign sorted_posts = project_posts | sort: 'date' | reverse %}
+          {% for post in sorted_posts %}
+            <div class="log-item">
+              <span class="tree-branch">{% if forloop.last %}└──{% else %}├──{% endif %}</span>
+              <a href="{{ post.url | relative_url }}" class="log-link">
+                <span class="log-date">{{ post.date | date: "%y.%m.%d" }}</span>
+                <span class="log-title">{{ post.title }}</span>
+              </a>
+            </div>
+          {% endfor %}
         </div>
       </div>
     {% endif %}
   </div>
-
-  <!-- Notion Landing Section -->
-  {% if page.notion_landing %}
-  <div class="notion-landing-section">
-    <div class="notion-link-card">
-      <div class="card-icon">
-        {% case page.notion_landing.type %}
-          {% when 'notion' %}
-            📋
-          {% when 'landing' %}
-            🌐
-          {% when 'docs' %}
-            📚
-          {% when 'website' %}
-            🔗
-          {% when 'github' %}
-            💻
-          {% when 'demo' %}
-            🎮
-          {% else %}
-            📋
-        {% endcase %}
-      </div>
-      <div class="card-content">
-        <h4>{{ page.notion_landing.title }}</h4>
-        <p>{{ page.notion_landing.description }}</p>
-      </div>
-      <a href="{{ page.notion_landing.url }}" class="card-button" target="_blank" rel="noopener">
-        Visit Link →
-      </a>
+  
+  <!-- 페이지 본문 -->
+  {% if content and content != "" %}
+    <div class="project-content">
+      {{ content }}
     </div>
-  </div>
-  {% endif %}
-
-  <!-- Development Logs -->
-  {% assign project_posts = site.posts | where: "project", page.project_id %}
-  {% if project_posts.size > 0 %}
-  <div class="dev-logs-section">
-    <h2 class="section-title">📝 Development Journey</h2>
-    <p class="section-subtitle">Follow the development process and key learnings</p>
-    
-    <div class="dev-logs">
-      {% for post in project_posts limit:3 %}
-        <article class="dev-log-card">
-          <div class="log-header">
-            <time class="log-date">{{ post.date | date: "%B %d, %Y" }}</time>
-            <span class="log-category">{{ post.category }}</span>
-          </div>
-          <h3 class="log-title">
-            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-          </h3>
-          {% if post.excerpt %}
-            <p class="log-excerpt">{{ post.excerpt | strip_html | truncatewords: 25 }}</p>
-          {% endif %}
-        </article>
-      {% endfor %}
-    </div>
-    
-    {% if project_posts.size > 3 %}
-      <div class="view-all">
-        <a href="{{ '/posts/' | relative_url }}" class="view-all-btn">
-          View All Posts →
-        </a>
-      </div>
-    {% endif %}
-  </div>
   {% endif %}
 </div>
-
-<style>
-.project-detail {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-.project-nav {
-  padding: 20px 0;
-}
-
-.back-link {
-  color: #667eea;
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.2s ease;
-}
-
-.back-link:hover {
-  color: #5a6fd8;
-}
-
-.project-hero {
-  text-align: center;
-  padding: 20px 0 80px 0;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  border-radius: 20px;
-  margin-bottom: 60px;
-  color: white;
-  position: relative;
-}
-
-.hero-content {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 0 40px;
-}
-
-.project-icon img {
-  width: 140px;
-  height: 140px;
-  border-radius: 32px;
-  margin-bottom: 24px;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-  border: 3px solid rgba(255,255,255,0.2);
-}
-
-.emoji-icon {
-  font-size: 120px;
-  display: inline-block;
-  margin-bottom: 24px;
-  padding: 30px;
-  background: rgba(255,255,255,0.1);
-  border-radius: 32px;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
-  border: 3px solid rgba(255,255,255,0.2);
-}
-
-.project-title {
-  font-size: 3.5rem;
-  font-weight: 800;
-  margin: 0 0 20px 0;
-  text-shadow: 0 4px 20px rgba(0,0,0,0.4), 0 2px 10px rgba(0,0,0,0.3);
-  color: white;
-}
-
-.project-description {
-  font-size: 1.3rem;
-  line-height: 1.6;
-  margin-bottom: 40px;
-  background: rgba(255,255,255,0.15);
-  padding: 20px 30px;
-  border-radius: 16px;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255,255,255,0.2);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
-  color: white;
-  font-weight: 500;
-}
-
-.hero-actions {
-  display: flex;
-  gap: 16px;
-  justify-content: center;
-  flex-wrap: wrap;
-  text-align: center;
-}
-
-.btn {
-  padding: 14px 28px;
-  border-radius: 50px;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 16px;
-  transition: all 0.3s ease;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  gap: 8px;
-}
-
-.btn-primary {
-  background: white;
-  color: #667eea;
-}
-
-.btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-}
-
-.btn-secondary {
-  background: rgba(255,255,255,0.1);
-  color: white;
-  border: 2px solid rgba(255,255,255,0.3);
-  backdrop-filter: blur(10px);
-}
-
-.btn-secondary:hover {
-  background: rgba(255,255,255,0.2);
-  transform: translateY(-2px);
-}
-
-.section-title {
-  font-size: 2.2rem;
-  font-weight: 700;
-  margin-bottom: 16px;
-  color: #2c3e50;
-}
-
-.section-subtitle {
-  font-size: 1.1rem;
-  color: #7f8c8d;
-  margin-bottom: 40px;
-}
-
-.feature-section, .timeline-section, .tech-section, .dev-logs-section {
-  margin-bottom: 80px;
-}
-
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 24px;
-}
-
-.feature-card {
-  background: white;
-  padding: 32px 24px;
-  border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-  text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: 1px solid #f1f3f4;
-}
-
-.feature-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 40px rgba(0,0,0,0.12);
-}
-
-.feature-icon {
-  font-size: 3rem;
-  margin-bottom: 16px;
-}
-
-.feature-card h3 {
-  font-size: 1.3rem;
-  font-weight: 600;
-  margin-bottom: 12px;
-  color: #2c3e50;
-}
-
-.feature-card p {
-  color: #7f8c8d;
-  line-height: 1.6;
-}
-
-.timeline {
-  position: relative;
-  padding-left: 30px;
-}
-
-.timeline::before {
-  content: '';
-  position: absolute;
-  left: 15px;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background: #e9ecef;
-}
-
-.timeline-item {
-  position: relative;
-  margin-bottom: 40px;
-  padding-left: 30px;
-}
-
-.timeline-marker {
-  position: absolute;
-  left: -37px;
-  top: 8px;
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background: #e9ecef;
-  border: 3px solid white;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-
-.timeline-item.completed .timeline-marker {
-  background: #28a745;
-}
-
-.timeline-item.active .timeline-marker {
-  background: #667eea;
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0% { box-shadow: 0 0 0 0 rgba(102, 126, 234, 0.4); }
-  70% { box-shadow: 0 0 0 10px rgba(102, 126, 234, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(102, 126, 234, 0); }
-}
-
-.timeline-content h3 {
-  font-size: 1.3rem;
-  font-weight: 600;
-  margin-bottom: 8px;
-  color: #2c3e50;
-}
-
-.timeline-content p {
-  color: #7f8c8d;
-  margin-bottom: 8px;
-  line-height: 1.5;
-}
-
-.timeline-status {
-  font-size: 0.9rem;
-  font-weight: 500;
-  padding: 4px 12px;
-  border-radius: 20px;
-  background: #f8f9fa;
-  color: #6c757d;
-}
-
-.timeline-item.completed .timeline-status {
-  background: #d4edda;
-  color: #155724;
-}
-
-.timeline-item.active .timeline-status {
-  background: #e3f2fd;
-  color: #1565c0;
-}
-
-.tech-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  justify-content: center;
-}
-
-.tech-badge {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  padding: 10px 16px;
-  border-radius: 25px;
-  font-size: 0.9rem;
-  font-weight: 500;
-  display: inline-block;
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.tech-badge:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
-}
-
-.screenshot-placeholder {
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-  border-radius: 20px;
-  padding: 80px 40px;
-  text-align: center;
-  border: 2px dashed #dee2e6;
-  margin: 40px 0;
-}
-
-.screenshots-gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  gap: 30px;
-  margin: 40px 0;
-}
-
-.screenshot-item {
-  position: relative;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.12);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  background: white;
-}
-
-.screenshot-item:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.2);
-}
-
-.screenshot-image {
-  width: 100%;
-  height: auto;
-  display: block;
-  transition: transform 0.3s ease;
-}
-
-.screenshot-item:hover .screenshot-image {
-  transform: scale(1.05);
-}
-
-.youtube-container {
-  position: relative;
-  width: 100%;
-  height: 0;
-  padding-bottom: 56.25%; /* 16:9 aspect ratio */
-  overflow: hidden;
-  border-radius: 16px;
-}
-
-.youtube-video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 16px;
-}
-
-.video-badge {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  background: rgba(255, 0, 0, 0.9);
-  color: white;
-  padding: 6px 12px;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  backdrop-filter: blur(10px);
-  z-index: 10;
-}
-
-.screenshot-video {
-  border-radius: 16px;
-}
-
-.screenshot-video .screenshot-overlay {
-  background: linear-gradient(transparent, rgba(255, 0, 0, 0.8));
-}
-
-.gif-container {
-  position: relative;
-}
-
-.gif-badge {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  background: rgba(0,0,0,0.8);
-  color: white;
-  padding: 6px 12px;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  backdrop-filter: blur(10px);
-}
-
-.screenshot-overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(transparent, rgba(0,0,0,0.8));
-  color: white;
-  padding: 30px 20px 20px;
-  transform: translateY(100%);
-  transition: transform 0.3s ease;
-  text-align: center;
-}
-
-.screenshot-item:hover .screenshot-overlay {
-  transform: translateY(0);
-}
-
-.screenshot-title {
-  font-size: 1.2rem;
-  font-weight: 600;
-  margin-bottom: 8px;
-}
-
-.screenshot-description {
-  font-size: 0.9rem;
-  opacity: 0.9;
-  line-height: 1.4;
-}
-
-.screenshot-mobile {
-  max-width: 300px;
-  margin: 0 auto;
-}
-
-@media (max-width: 768px) {
-  .screenshots-gallery {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-  
-  .screenshot-overlay {
-    position: static;
-    transform: none;
-    background: rgba(0,0,0,0.05);
-    color: #333;
-    padding: 16px;
-  }
-  
-  .screenshot-item:hover .screenshot-overlay {
-    transform: none;
-  }
-}
-
-.placeholder-content {
-  max-width: 400px;
-  margin: 0 auto;
-}
-
-.placeholder-icon {
-  font-size: 4rem;
-  margin-bottom: 20px;
-  opacity: 0.6;
-}
-
-.placeholder-content h3 {
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-bottom: 12px;
-  color: #6c757d;
-}
-
-.placeholder-content p {
-  color: #868e96;
-  font-size: 1rem;
-  line-height: 1.5;
-}
-
-.dev-logs {
-  display: grid;
-  gap: 24px;
-}
-
-.dev-log-card {
-  background: white;
-  padding: 24px;
-  border-radius: 12px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-  border: 1px solid #f1f3f4;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.dev-log-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-}
-
-.log-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 12px;
-}
-
-.log-date {
-  font-size: 0.9rem;
-  color: #7f8c8d;
-}
-
-.log-category {
-  font-size: 0.8rem;
-  padding: 4px 8px;
-  background: #e3f2fd;
-  color: #1565c0;
-  border-radius: 12px;
-  font-weight: 500;
-}
-
-.log-title a {
-  color: #2c3e50;
-  text-decoration: none;
-  font-size: 1.2rem;
-  font-weight: 600;
-  transition: color 0.2s ease;
-}
-
-.log-title a:hover {
-  color: #667eea;
-}
-
-.log-excerpt {
-  color: #7f8c8d;
-  line-height: 1.6;
-  margin-top: 8px;
-}
-
-.view-all {
-  text-align: center;
-  margin-top: 40px;
-}
-
-.view-all-btn {
-  color: #667eea;
-  text-decoration: none;
-  font-weight: 600;
-  padding: 12px 24px;
-  border: 2px solid #667eea;
-  border-radius: 50px;
-  transition: all 0.3s ease;
-}
-
-.view-all-btn:hover {
-  background: #667eea;
-  color: white;
-  transform: translateY(-2px);
-}
-
-@media (max-width: 768px) {
-  .project-detail {
-    padding: 0 5px !important;
-    max-width: 100% !important;
-  }
-  
-  .project-nav {
-    padding: 10px 0 !important;
-  }
-  
-  .project-hero {
-    padding: 10px 5px 30px 5px !important;
-    margin-bottom: 20px !important;
-    border-radius: 12px !important;
-  }
-  
-  .project-title {
-    font-size: 1.5rem !important;
-    margin-bottom: 15px !important;
-  }
-  
-  .project-description {
-    font-size: 0.9rem !important;
-    padding: 12px 15px !important;
-    margin-bottom: 20px !important;
-    border-radius: 12px !important;
-  }
-  
-  .hero-content {
-    padding: 0 10px !important;
-  }
-  
-  .hero-icon {
-    margin-bottom: 15px !important;
-  }
-  
-  .hero-icon-image {
-    width: 80px !important;
-    height: 80px !important;
-    border-radius: 20px !important;
-  }
-  
-  .hero-icon-emoji {
-    font-size: 60px !important;
-    padding: 15px !important;
-    border-radius: 20px !important;
-  }
-  
-  .hero-actions {
-    flex-direction: column !important;
-    align-items: center !important;
-    gap: 8px !important;
-  }
-  
-  .btn {
-    width: 100% !important;
-    max-width: 200px !important;
-    padding: 8px 16px !important;
-    font-size: 12px !important;
-    border-radius: 30px !important;
-  }
-  
-  .screenshots-section {
-    padding: 0 10px !important;
-  }
-  
-  .section-title {
-    font-size: 1.3rem !important;
-    margin-bottom: 8px !important;
-  }
-  
-  .section-subtitle {
-    font-size: 0.8rem !important;
-    margin-bottom: 20px !important;
-  }
-  
-  .screenshots-gallery {
-    gap: 15px !important;
-  }
-  
-  .youtube-container {
-    border-radius: 12px !important;
-  }
-}
-
-/* 태블릿 사이즈 (769px - 1024px) - FORCE OVERRIDE */
-@media screen and (min-width: 769px) and (max-width: 1024px) {
-  .project-detail {
-    padding: 0 20px !important;
-    max-width: 100% !important;
-  }
-  
-  .project-hero {
-    padding: 20px 10px 40px 10px !important;
-    margin-bottom: 30px !important;
-  }
-  
-  .project-title {
-    font-size: 2.2rem !important;
-  }
-  
-  .project-description {
-    font-size: 1.1rem !important;
-    padding: 16px 20px !important;
-  }
-  
-  .hero-icon-image {
-    width: 120px !important;
-    height: 120px !important;
-  }
-  
-  .hero-icon-emoji {
-    font-size: 100px !important;
-    padding: 25px !important;
-  }
-  
-  .btn {
-    max-width: 250px !important;
-    padding: 12px 24px !important;
-    font-size: 14px !important;
-  }
-  
-  .section-title {
-    font-size: 1.8rem !important;
-  }
-  
-  .section-subtitle {
-    font-size: 1rem !important;
-  }
-}
-
-/* Notion Landing Card */
-.notion-landing-section {
-  margin-bottom: 80px;
-}
-
-.notion-link-card {
-  background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255,255,255,0.2);
-  border-radius: 20px;
-  padding: 2rem;
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  transition: all 0.3s ease;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
-  background-color: white;
-  border: 1px solid #f1f3f4;
-}
-
-.notion-link-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(0,0,0,0.15);
-  border-color: rgba(102, 126, 234, 0.3);
-}
-
-.card-icon {
-  font-size: 3rem;
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  flex-shrink: 0;
-}
-
-.card-content {
-  flex: 1;
-}
-
-.card-content h4 {
-  color: #2c3e50;
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-  line-height: 1.3;
-}
-
-.card-content p {
-  color: #7f8c8d;
-  font-size: 1rem;
-  line-height: 1.5;
-  margin: 0;
-}
-
-.card-button {
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  color: white;
-  padding: 0.75rem 1.5rem;
-  border-radius: 50px;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 0.9rem;
-  transition: all 0.3s ease;
-  flex-shrink: 0;
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  gap: 8px;
-}
-
-.card-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
-  text-decoration: none;
-  color: white;
-}
-
-@media (max-width: 768px) {
-  .notion-landing-section {
-    margin-bottom: 30px !important;
-    padding: 0 10px !important;
-  }
-  
-  .notion-link-card {
-    flex-direction: column !important;
-    text-align: center !important;
-    padding: 15px 12px !important;
-    gap: 12px !important;
-    margin: 0 auto !important;
-    max-width: 96% !important;
-    border-radius: 12px !important;
-  }
-  
-  .card-icon {
-    font-size: 1.8rem !important;
-    margin-bottom: 3px !important;
-  }
-  
-  .card-content {
-    width: 100% !important;
-  }
-  
-  .card-content h4 {
-    font-size: 1rem !important;
-    margin-bottom: 6px !important;
-    line-height: 1.3 !important;
-  }
-  
-  .card-content p {
-    font-size: 0.8rem !important;
-    line-height: 1.4 !important;
-  }
-  
-  .card-button {
-    align-self: stretch !important;
-    text-align: center !important;
-    width: calc(100% - 20px) !important;
-    max-width: none !important;
-    margin: 0 10px !important;
-    padding: 10px 16px !important;
-    font-size: 0.8rem !important;
-    border-radius: 30px !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    box-sizing: border-box !important;
-  }
-}
-
-/* 태블릿 사이즈에서의 Notion Landing Card - FORCE OVERRIDE */
-@media screen and (min-width: 769px) and (max-width: 1024px) {
-  .notion-landing-section {
-    margin-bottom: 60px !important;
-    padding: 0 20px !important;
-  }
-  
-  .notion-link-card {
-    padding: 1.5rem !important;
-    gap: 1.2rem !important;
-    max-width: 90% !important;
-    margin: 0 auto !important;
-  }
-  
-  .card-icon {
-    font-size: 2.5rem !important;
-  }
-  
-  .card-content h4 {
-    font-size: 1.3rem !important;
-  }
-  
-  .card-content p {
-    font-size: 0.95rem !important;
-  }
-  
-  .card-button {
-    padding: 12px 20px !important;
-    font-size: 0.9rem !important;
-  }
-}
-</style>

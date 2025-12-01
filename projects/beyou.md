@@ -2,7 +2,7 @@
 layout: project
 title: "BeYou"
 description: "You can Be yourself"
-emoji: "🌟"
 project_id: "beyou"
-order: 2
+order: 3
+status: inactive
 ---
