@@ -79,3 +79,111 @@ layout: default
   </div>
   {% endif %}
 </div>
+
+<style>
+  /* All Projects 페이지 CSS */
+
+.all-projects-page {
+  font-family: 'Courier New', monospace;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.terminal-prompt {
+  font-weight: bold;
+  margin-bottom: 30px;
+  font-family: 'Courier New', monospace;
+}
+
+.section-title {
+  margin-bottom: 20px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  font-family: 'Courier New', monospace;
+}
+
+.section-divider {
+  margin: 30px 0;
+  font-family: 'Courier New', monospace;
+}
+
+.exa-container {
+  margin-bottom: 20px;
+}
+
+.exa-line {
+  font-family: 'Courier New', monospace;
+  display: flex;
+  align-items: baseline;
+}
+
+.exa-perms {
+  display: inline-block;
+  width: 120px;
+}
+
+.exa-user {
+  display: inline-block;
+  width: 80px;
+}
+
+.exa-size {
+  display: inline-block;
+  width: 50px;
+  text-align: right;
+}
+
+.exa-date {
+  display: inline-block;
+  width: 80px;
+  margin-left: 15px;
+}
+
+.exa-name {
+  text-decoration: none;
+  font-weight: bold;
+  margin-left: 15px;
+}
+
+.exa-desc {
+  font-size: 0.9em;
+  margin-top: 5px;
+  font-style: italic;
+  margin-left: 345px;
+  font-family: 'Courier New', monospace;
+}
+
+.exa-line.inactive {
+  opacity: 0.5;
+}
+
+.exa-desc.inactive {
+  opacity: 0.5;
+}
+
+/* 모바일 */
+@media (max-width: 768px) {
+  .exa-line {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .exa-perms,
+  .exa-user,
+  .exa-size,
+  .exa-date {
+    width: auto;
+    margin-left: 0;
+  }
+  
+  .exa-desc {
+    margin-left: 0;
+    padding-left: 15px;
+  }
+  
+  .exa-size {
+    text-align: left;
+  }
+}
+</style>

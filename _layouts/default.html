@@ -1,31 +1,31 @@
 <!DOCTYPE html>
 <html lang="{{ page.lang | default: site.lang | default: 'en' }}">
-{%- comment -%}
-  Build a practical CSP. It remains strict by default while allowing
-  common use cases like external images and Google Fonts.
-  If you need to permit additional script/connect sources (e.g., analytics),
-  extend via `csp_extra` in your _config.yml.
-{%- endcomment -%}
 {%- capture csp -%}
 default-src 'none';
-connect-src 'self';
-base-uri 'self';
-form-action 'none';
+connect-src 'self' https://api.github.com;
 img-src 'self' https: data:;
-style-src 'self' https://fonts.googleapis.com;
+style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
 font-src 'self' https://fonts.gstatic.com data:;
-media-src 'self';
-object-src 'none';
-child-src 'self';
-script-src 'self';
+script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://unpkg.com;
 {%- endcapture -%}
-{%- capture csp_final -%}{{ csp | strip | replace: '\n', ' ' }} {%- if site.csp_extra %} {{ site.csp_extra }}{%- endif -%}{%- endcapture -%}
+{%- capture csp_final -%}{{ csp | strip | replace: '\n', ' ' }}{%- endcapture -%}
 <meta http-equiv="Content-Security-Policy" content="{{ csp_final | strip }}" />
-<meta http-equiv="X-XSS-Protection"  content="1;mode=block" always>
-<meta http-equiv="Referrer-Policy" content="no-referrer, strict-origin-when-cross-origin">
 
-  {%- include head.html -%}
+{%- include head.html -%}
 
+  <style>
+  body {
+    background-image: url('/assets/images/wallpaper/lain_wallpaper2.jpg');
+    /* 2. 배경 이미지 고정 및 전체 커버 */
+    background-attachment: fixed; /* 페이지를 스크롤해도 배경 이미지는 고정 */
+    background-position: center center; /* 이미지를 중앙에 배치 */
+    background-repeat: no-repeat; /* 이미지 반복 방지 */
+    background-size: cover; /* 화면을 완전히 덮도록 이미지 크기 조정 */
+
+    /* (선택 사항) 내용의 가독성을 위한 어두운 오버레이 효과 */
+    /* 배경이 어두운 색이어야 Steam 스타일과 유사하고, 위에 있는 글씨가 잘 보입니다. */
+    background-color: #1b2838; /* Steam 프로필의 어두운 배경색과 유사한 색상 */
+</style>
   <body>
     <div class="container">
 
