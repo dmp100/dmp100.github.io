@@ -3,149 +3,105 @@ layout: default
 ---
 
 <div class="category-page">
-  <div class="post-back">
-  </div>
+  <div class="post-back"></div>
   
   <div class="category-header">
     <h1 class="category-title">📁 {{ page.category }}/</h1>
     <p class="category-description">{{ page.description }}</p>
   </div>
   
-  <!-- Posts Tree -->
   <div class="posts-tree">
     <div class="tree-root">_posts/{{ page.category }}/</div>
+
+    {% comment %} 카테고리 포스트 가져오기 (null 체크) {% endcomment %}
+    {% assign target_posts = site.categories[page.category] %}
     
-    {% assign all_posts = site.categories[page.category] %}
-    {% if all_posts and all_posts.size > 0 %}
-      {% assign all_posts = all_posts | sort: 'date' | reverse %}
+    {% if target_posts == nil %}
+      {% assign target_posts = "" | split: "" %}
+    {% endif %}
+    
+    {% if target_posts.size > 0 %}
+      {% assign target_posts = target_posts | sort: 'date' | reverse %}
+      
+      {% comment %} 실제 파일 경로 기반으로 폴더 수집 {% endcomment %}
       {% assign folder_map = "" | split: "" %}
-    
-    {% comment %} 1단계: 모든 폴더 경로와 포스트 매핑 {% endcomment %}
-    {% for post in all_posts %}
-      {% assign sub_path = "" %}
-      {% assign started = false %}
-      {% for cat in post.categories %}
-        {% if started %}
-          {% if sub_path == "" %}
-            {% assign sub_path = cat %}
-          {% else %}
-            {% assign sub_path = sub_path | append: "/" | append: cat %}
-          {% endif %}
-        {% endif %}
-        {% if cat == page.category %}
-          {% assign started = true %}
+      
+      {% for post in target_posts %}
+        {% assign clean_path = post.path | remove_first: "_posts/" %}
+        {% assign path_parts = clean_path | split: "/" %}
+        
+        {% comment %} 파일명 제거하고 순수 폴더 경로만 추출 {% endcomment %}
+        {% if path_parts.size > 1 %}
+          {% assign folder_parts = "" | split: "" %}
+          {% for part in path_parts %}
+            {% unless forloop.last %}
+              {% assign folder_parts = folder_parts | push: part %}
+            {% endunless %}
+          {% endfor %}
+          {% assign folder_path = folder_parts | join: "/" | append: "/" %}
+          {% assign folder_map = folder_map | push: folder_path %}
         {% endif %}
       {% endfor %}
       
-      {% comment %} 폴더 경로를 키로 포스트 저장 {% endcomment %}
-      {% assign found = false %}
-      {% for item in folder_map %}
-        {% if item.path == sub_path %}
-          {% assign found = true %}
-        {% endif %}
-      {% endfor %}
-      {% unless found %}
-        {% assign new_item = "" | split: "" %}
-        {% assign folder_map = folder_map | push: sub_path %}
-      {% endunless %}
-    {% endfor %}
-    
-    {% comment %} 2단계: 폴더 구조 출력 {% endcomment %}
-    {% assign sorted_paths = folder_map | uniq | sort %}
-    {% assign displayed_folders = "" | split: "" %}
-    
-    {% for folder_path in sorted_paths %}
-      {% if folder_path != "" %}
-        {% assign parts = folder_path | split: "/" %}
-        {% assign depth = parts.size %}
+      {% assign folder_map = folder_map | uniq | sort %}
+      
+      {% comment %} 루트 레벨 포스트 먼저 출력 {% endcomment %}
+      {% for post in target_posts %}
+        {% assign clean_path = post.path | remove_first: "_posts/" %}
+        {% assign path_parts = clean_path | split: "/" %}
         
-        {% comment %} 각 깊이별로 폴더 표시 {% endcomment %}
-        {% for i in (1..depth) %}
-          {% assign current_parts = "" | split: "" %}
-          {% for j in (1..i) %}
-            {% assign idx = j | minus: 1 %}
-            {% assign current_parts = current_parts | push: parts[idx] %}
-          {% endfor %}
-          {% assign current_path = current_parts | join: "/" %}
-          
-          {% unless displayed_folders contains current_path %}
-            {% assign displayed_folders = displayed_folders | push: current_path %}
-            {% assign indent = i | minus: 1 | times: 20 %}
-            {% assign folder_name = parts[idx] %}
-            
-            <div class="tree-folder" style="padding-left: {{ indent }}px;">
-              {% if i > 1 %}
-                {% for k in (1..i) %}
-                  {% if forloop.first == false and forloop.last == false %}
-                    <span class="tree-indent">│   </span>
-                  {% endif %}
-                {% endfor %}
-              {% endif %}
-              <span class="tree-icon">├──</span>
-              <span class="folder-name">📁 {{ folder_name }}/</span>
-            </div>
-          {% endunless %}
-        {% endfor %}
-        
-        {% comment %} 해당 폴더의 포스트 출력 {% endcomment %}
-        {% for post in all_posts %}
-          {% assign post_path = "" %}
-          {% assign started = false %}
-          {% for cat in post.categories %}
-            {% if started %}
-              {% if post_path == "" %}
-                {% assign post_path = cat %}
-              {% else %}
-                {% assign post_path = post_path | append: "/" | append: cat %}
-              {% endif %}
-            {% endif %}
-            {% if cat == page.category %}
-              {% assign started = true %}
-            {% endif %}
-          {% endfor %}
-          
-          {% if post_path == folder_path %}
-            {% assign indent = depth | times: 20 %}
-            <div class="tree-post" style="padding-left: {{ indent }}px;">
-              {% for k in (1..depth) %}
-                {% if forloop.last == false %}
-                  <span class="tree-indent">│   </span>
-                {% endif %}
-              {% endfor %}
-              <span class="tree-icon">├──</span>
-              <span class="post-date">{{ post.date | date: "%y.%m.%d" }}</span>
-              <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
-            </div>
-          {% endif %}
-        {% endfor %}
-      {% else %}
-        {% comment %} 루트 레벨 포스트 {% endcomment %}
-        {% for post in all_posts %}
-          {% assign post_path = "" %}
-          {% assign started = false %}
-          {% for cat in post.categories %}
-            {% if started %}
-              {% if post_path == "" %}
-                {% assign post_path = cat %}
-              {% else %}
-                {% assign post_path = post_path | append: "/" | append: cat %}
-              {% endif %}
-            {% endif %}
-            {% if cat == page.category %}
-              {% assign started = true %}
-            {% endif %}
-          {% endfor %}
-          
-          {% if post_path == "" %}
+        {% comment %} 파일이 카테고리 폴더 바로 아래에 있는 경우 {% endcomment %}
+        {% if path_parts.size == 2 %}
+          {% if path_parts[0] == page.category %}
             <div class="tree-post">
               <span class="tree-icon">├──</span>
               <span class="post-date">{{ post.date | date: "%y.%m.%d" }}</span>
               <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
             </div>
           {% endif %}
-        {% endfor %}
-      {% endif %}
-    {% endfor %}
+        {% endif %}
+      {% endfor %}
+      
+      {% comment %} 하위 폴더 및 해당 포스트 출력 {% endcomment %}
+      {% for folder_path in folder_map %}
+        {% assign folder_parts = folder_path | split: "/" %}
+        {% assign depth = folder_parts.size | minus: 1 %}
+        
+        {% if depth > 0 %}
+          {% assign indent = depth | times: 20 %}
+          {% assign folder_name = folder_parts[depth] %}
+          
+          <div class="tree-folder" style="padding-left: {{ indent }}px;">
+            <span class="tree-icon">├──</span>
+            <span class="folder-name">📁 {{ folder_name }}/</span>
+          </div>
+          
+          {% comment %} 이 폴더에 속한 포스트 출력 {% endcomment %}
+          {% for post in target_posts %}
+            {% assign clean_path = post.path | remove_first: "_posts/" %}
+            {% assign post_folder = clean_path | split: "/" %}
+            {% assign post_folder_size = post_folder.size | minus: 1 %}
+            
+            {% assign rebuild_folder = "" | split: "" %}
+            {% for part in post_folder %}
+              {% unless forloop.last %}
+                {% assign rebuild_folder = rebuild_folder | push: part %}
+              {% endunless %}
+            {% endfor %}
+            {% assign post_folder_path = rebuild_folder | join: "/" | append: "/" %}
+            
+            {% if post_folder_path == folder_path %}
+              {% assign post_indent = depth | plus: 1 | times: 20 %}
+              <div class="tree-post" style="padding-left: {{ post_indent }}px;">
+                <span class="tree-icon">├──</span>
+                <span class="post-date">{{ post.date | date: "%y.%m.%d" }}</span>
+                <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+              </div>
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+      {% endfor %}
+      
     {% else %}
       <div class="tree-post">
         <span class="post-date">No posts in this category yet.</span>
@@ -153,4 +109,3 @@ layout: default
     {% endif %}
   </div>
 </div>
-

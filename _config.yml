@@ -26,10 +26,10 @@ header_pages:
 footer: ' '
 
 # Plugins
-# plugins:
-#   - jekyll-feed
-#   - jekyll-seo-tag
-#   - jekyll-sitemap
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
 
 # Markdown settings
 markdown: kramdown
@@ -75,5 +75,6 @@ exclude:
 category_order:
   - ideas
   - diary
-  - language
   - whatifeel
+  - drawing1
+  - test

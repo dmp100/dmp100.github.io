@@ -3,8 +3,7 @@ layout: default
 ---
 
 <div class="all-posts-page">
-  <div class="post-back">
-  </div>
+  <div class="post-back"></div>
   
   <div class="posts-header">
     <h1 class="posts-title">All Posts</h1>
@@ -15,21 +14,15 @@ layout: default
   <div class="posts-tree">
     <div class="tree-root">_posts/</div>
     
-    {% comment %} config에서 정의한 순서대로 표시 {% endcomment %}
+    {% comment %} 모든 카테고리 수집 {% endcomment %}
+    {% assign all_categories = "" | split: "" %}
+    
     {% if site.category_order %}
+      {% comment %} config에 정의된 순서대로 {% endcomment %}
       {% for category_name in site.category_order %}
         {% assign category = site.categories[category_name] %}
-        {% if category %}
-          {% assign post_count = category | size %}
-          {% assign is_last = forloop.last %}
-          
-          <div class="tree-category">
-            <span class="tree-icon">{% if is_last %}└──{% else %}├──{% endif %}</span>
-            <a href="/{{ category_name | downcase }}/" class="category-link">
-              <span class="category-folder">📁 {{ category_name }}/</span>
-              <span class="post-count">({{ post_count }} posts)</span>
-            </a>
-          </div>
+        {% if category and category.size > 0 %}
+          {% assign all_categories = all_categories | push: category_name %}
         {% endif %}
       {% endfor %}
     {% else %}
@@ -37,17 +30,33 @@ layout: default
       {% assign sorted_categories = site.categories | sort %}
       {% for category in sorted_categories %}
         {% assign category_name = category[0] %}
-        {% assign post_count = category[1] | size %}
+        {% assign category_posts = category[1] %}
+        {% if category_posts.size > 0 %}
+          {% assign all_categories = all_categories | push: category_name %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+    
+    {% comment %} 카테고리 출력 {% endcomment %}
+    {% if all_categories.size > 0 %}
+      {% for category_name in all_categories %}
+        {% assign category_posts = site.categories[category_name] %}
+        {% assign post_count = category_posts | size %}
         {% assign is_last = forloop.last %}
         
         <div class="tree-category">
           <span class="tree-icon">{% if is_last %}└──{% else %}├──{% endif %}</span>
           <a href="/{{ category_name | downcase }}/" class="category-link">
             <span class="category-folder">📁 {{ category_name }}/</span>
-            <span class="post-count">({{ post_count }} posts)</span>
+            <span class="post-count">({{ post_count }} post{% if post_count != 1 %}s{% endif %})</span>
           </a>
         </div>
       {% endfor %}
+    {% else %}
+      <div class="tree-category">
+        <span class="tree-icon">└──</span>
+        <span style="color: #999;">No categories found</span>
+      </div>
     {% endif %}
   </div>
 </div>
