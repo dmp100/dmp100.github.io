@@ -14,3 +14,42 @@
     </ul>
   </div>
 </header>
+
+
+<style>
+  header .menu ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px; /* 항목 간 간격 */
+  list-style: none;
+}
+
+header .menu a {
+  color: #fff;
+  text-decoration: none;
+  font-family: 'Courier New', monospace;
+  font-size: 0.95rem;
+}
+
+header .menu a:hover {
+  text-decoration: underline;
+}
+
+
+@media (max-width: 600px) {
+  header {
+    padding: 10px 0;             /* 위아래 간격 조금 더 확보 */
+  }
+
+  header .menu ul {
+    flex-direction: row;        /* 가로 유지 */
+    justify-content: center;    /* 중앙정렬 */
+    gap: 4px;                   /* 간격 축소 */
+  }
+
+  header .menu a {
+    font-size: 0.85rem;         /* 글자 크기 약간 축소 */
+  }
+}
+</style>

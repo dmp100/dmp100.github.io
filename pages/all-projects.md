@@ -1,5 +1,5 @@
 ---
 layout: all-projects
-title: "All Projects"
+title: "/all_project"
 permalink: /projects/
 ---

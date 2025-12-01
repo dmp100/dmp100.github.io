@@ -6,12 +6,9 @@ layout: default
 
 <div class="all-projects-page">
   <div class="post-back">
-    <a class="black-link" href="{{ '/' | relative_url }}">
-      cd ..
-    </a>
   </div>
 
-  <div class="terminal-prompt">[규현@arch ~/projects]$ exa --long --header</div>
+  <div class="terminal-prompt">[dmp100@arch ~/projects]$ exa --long --header</div>
 
   {% assign all_projects = site.pages | where: 'layout', 'project' | sort: 'order' %}
   {% assign active_projects = all_projects | where: 'status', 'active' %}
@@ -33,7 +30,7 @@ layout: default
       <div class="exa-container">
         <div class="exa-line active">
           <span class="exa-perms">drwxr-xr-x</span>
-          <span class="exa-user">규현</span>
+          <span class="exa-user">dmp100</span>
           <span class="exa-size">{{ project_posts.size }}</span>
           <span class="exa-date">{{ last_date }}</span>
           <a href="{{ project.url | relative_url }}" class="exa-name">{{ project.title | downcase }}/</a>
@@ -66,7 +63,7 @@ layout: default
       <div class="exa-container">
         <div class="exa-line inactive">
           <span class="exa-perms">drwxr-xr-x</span>
-          <span class="exa-user">규현</span>
+          <span class="exa-user">dmp100</span>
           <span class="exa-size">{{ project_posts.size }}</span>
           <span class="exa-date">{{ last_date }}</span>
           <a href="{{ project.url | relative_url }}" class="exa-name">{{ project.title | downcase }}/</a>

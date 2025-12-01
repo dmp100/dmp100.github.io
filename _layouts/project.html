@@ -1,17 +1,16 @@
 ---
 layout: default
 ---
-
 <link rel="stylesheet" href="{{ '/assets/css/project.css' | relative_url }}">
 
 <div class="project-page">
   <div class="post-back">
     <a class="black-link" href="{{ '/projects/' | relative_url }}">
-      cd ..
+      cd /all-projects
     </a>
   </div>
   
-  <!-- neofetch 스타일 레이아웃 -->
+  <!-- neofetch 스타일 레이아웃 - 컴팩트 버전 -->
   <div class="neofetch-layout">
     {% if page.icon_image %}
       <div class="neofetch-left">
@@ -21,7 +20,7 @@ layout: default
     
     <div class="neofetch-right">
       <div class="neofetch-header">{{ page.title | downcase }}@dmp100</div>
-      <div class="neofetch-divider">─────────────────────────</div>
+      <div class="neofetch-divider">──────────────────────</div>
       
       <div class="neofetch-info">
         <div class="info-line">
@@ -48,94 +47,90 @@ layout: default
         
         {% if project_posts.size > 0 %}
           {% assign latest_post = project_posts | sort: 'date' | reverse | first %}
-          
           <div class="info-line">
             <span class="info-label">Last Update:</span>
             <span class="info-value">{{ latest_post.date | date: "%Y-%m-%d" }}</span>
           </div>
         {% endif %}
-      </div>
-    </div>
-  </div>
-  
-  <!-- 아래 섹션들 -->
-  <div class="project-sections">
-    <!-- 유튜브 영상 -->
-    {% if page.screenshots %}
-      {% for screenshot in page.screenshots %}
-        {% if screenshot.youtube %}
-          <div class="video-section">
-            <div class="section-header">📺 {{ screenshot.title }}</div>
-            <div class="youtube-container">
-              <iframe 
-                src="https://www.youtube.com/embed/{{ screenshot.youtube }}?rel=0&modestbranding=1" 
-                title="{{ screenshot.title }}"
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen>
-              </iframe>
-            </div>
-            {% if screenshot.description %}
-              <p class="video-desc">{{ screenshot.description }}</p>
-            {% endif %}
-          </div>
-        {% endif %}
-      {% endfor %}
-    {% endif %}
-    
-    <!-- 링크 -->
-    <div class="links-section">
-      <div class="section-header">🔗 Links</div>
-      <div class="links-grid">
-        {% if page.demo_url and page.demo_url != "#" %}
-          <a href="{{ page.demo_url }}" target="_blank" class="link-item">
-            <span class="link-icon">🚀</span> Live Demo
-          </a>
-        {% endif %}
         
-        {% if page.github_url and page.github_url != "#" %}
-          <a href="{{ page.github_url }}" target="_blank" class="link-item">
-            <span class="link-icon">💻</span> GitHub
-          </a>
-        {% endif %}
-        
-        {% if page.notion_landing %}
-          <a href="{{ page.notion_landing.url }}" target="_blank" class="link-item">
-            <span class="link-icon">
-              {% case page.notion_landing.type %}
-                {% when 'notion' %}📋
-                {% when 'docs' %}📚
-                {% when 'website' %}🔗
-                {% else %}📋
-              {% endcase %}
-            </span>
-            {{ page.notion_landing.title }}
-          </a>
-        {% endif %}
-      </div>
-    </div>
-    
-    <!-- 개발 로그 -->
-    {% if project_posts.size > 0 %}
-      <div class="logs-section">
-        <div class="section-header">📝 Development Logs</div>
-        <div class="logs-tree">
-          {% assign sorted_posts = project_posts | sort: 'date' | reverse %}
-          {% for post in sorted_posts %}
-            <div class="log-item">
-              <span class="tree-branch">{% if forloop.last %}└──{% else %}├──{% endif %}</span>
-              <a href="{{ post.url | relative_url }}" class="log-link">
-                <span class="log-date">{{ post.date | date: "%y.%m.%d" }}</span>
-                <span class="log-title">{{ post.title }}</span>
+        <!-- 링크를 neofetch 안에 통합 -->
+        <div class="info-line links-inline">
+          <span class="info-label">Links:</span>
+          <span class="info-value">
+            {% if page.demo_url and page.demo_url != "#" %}
+              <a href="{{ page.demo_url }}" target="_blank" class="inline-link">
+                <span class="link-icon">🚀</span>Demo
               </a>
-            </div>
-          {% endfor %}
+            {% endif %}
+            
+            {% if page.github_url and page.github_url != "#" %}
+              <a href="{{ page.github_url }}" target="_blank" class="inline-link">
+                <span class="link-icon">💻</span>GitHub
+              </a>
+            {% endif %}
+            
+            {% if page.notion_landing %}
+              <a href="{{ page.notion_landing.url }}" target="_blank" class="inline-link">
+                <span class="link-icon">
+                  {% case page.notion_landing.type %}
+                    {% when 'notion' %}📋
+                    {% when 'docs' %}📚
+                    {% when 'website' %}🔗
+                    {% else %}📋
+                  {% endcase %}
+                </span>
+                {{ page.notion_landing.title }}
+              </a>
+            {% endif %}
+          </span>
         </div>
       </div>
-    {% endif %}
+    </div>
   </div>
   
-  <!-- 페이지 본문 -->
+  <!-- 개발 로그 - 컴팩트 -->
+  {% if project_posts.size > 0 %}
+    <div class="logs-section-compact">
+      <div class="section-header-compact">Development Logs</div>
+      <div class="logs-tree">
+        {% assign sorted_posts = project_posts | sort: 'date' | reverse %}
+        {% for post in sorted_posts limit:5 %}
+          <div class="log-item">
+            <span class="tree-branch">{% if forloop.last %}└──{% else %}├──{% endif %}</span>
+            <a href="{{ post.url | relative_url }}" class="log-link">
+              <span class="log-date">{{ post.date | date: "%y.%m.%d" }}</span>
+              <span class="log-title">{{ post.title }}</span>
+            </a>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+  
+  <!-- 비디오 (있을 경우에만) -->
+  {% if page.screenshots %}
+    {% for screenshot in page.screenshots %}
+      {% if screenshot.youtube %}
+        <div class="video-section-compact">
+          <div class="section-header-compact">📺 {{ screenshot.title }}</div>
+          <div class="youtube-container">
+            <iframe 
+              src="https://www.youtube.com/embed/{{ screenshot.youtube }}?rel=0&modestbranding=1" 
+              title="{{ screenshot.title }}"
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen>
+            </iframe>
+          </div>
+          {% if screenshot.description %}
+            <p class="video-desc">{{ screenshot.description }}</p>
+          {% endif %}
+        </div>
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+  
+  <!-- 페이지 본문 (있을 경우에만) -->
   {% if content and content != "" %}
     <div class="project-content">
       {{ content }}
@@ -144,34 +139,34 @@ layout: default
 </div>
 
 <style>
-/* Project 상세 페이지 CSS */
+/* Compact Project 상세 페이지 CSS */
 
 .project-page {
-  max-width: 1200px;
-  margin: 40px auto;
-  padding: 40px;
+  max-width: 1000px;
+  margin: 20px auto;
+  padding: 30px;
 }
 
-/* neofetch 레이아웃 - 가로 배치 */
+/* neofetch 레이아웃 - 컴팩트 */
 .neofetch-layout {
   display: flex;
-  gap: 60px;
-  margin-top: 40px;
-  margin-bottom: 60px;
+  gap: 30px;
+  margin-top: 20px;
+  margin-bottom: 30px;
   align-items: flex-start;
 }
 
-/* 왼쪽: 이미지 */
+/* 왼쪽: 이미지 - 작게 */
 .neofetch-left {
-  flex: 0 0 400px;
-  width: 400px;
+  flex: 0 0 250px;
+  width: 250px;
 }
 
 .project-main-image {
   width: 100%;
-  max-width: 400px;
+  max-width: 250px;
   height: auto;
-  border-radius: 8px;
+  border-radius: 6px;
   display: block;
 }
 
@@ -183,36 +178,39 @@ layout: default
 
 .neofetch-header {
   font-family: 'Courier New', monospace;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   font-weight: bold;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .neofetch-divider {
   font-family: 'Courier New', monospace;
-  margin-bottom: 25px;
+  margin-bottom: 15px;
+  font-size: 0.9rem;
 }
 
 .neofetch-info {
-  margin-bottom: 40px;
+  margin-bottom: 0;
 }
 
 .info-line {
   font-family: 'Courier New', monospace;
-  font-size: 1rem;
-  margin-bottom: 15px;
+  font-size: 0.95rem;
+  margin-bottom: 12px;
   display: flex;
-  gap: 15px;
-}
-
-.info-label {
-  font-weight: bold;
-  min-width: 140px;
+  flex-direction: column;  /* 세로 배치 */
+  align-items: flex-start; /* 왼쪽 정렬 */
+  gap: 6px;                /* 라벨-값 사이 간격 */
 }
 
 .info-value {
   flex: 1;
   word-wrap: break-word;
+  white-space: normal;
+  overflow-wrap: break-word;
+  color: #ccc;             /* 설명 색상 (연한 회색) */
+  font-size: 0.9rem;       /* 조금 더 작게 */
+  line-height: 1.5;        /* 줄간격 */
 }
 
 .info-value.active {
@@ -220,27 +218,104 @@ layout: default
   font-weight: bold;
 }
 
+.info-label {
+  font-weight: bold;
+  color: #fff;             /* 라벨 색상 */
+}
+
 .info-value.inactive {
   color: #888;
 }
 
-/* 아래 섹션들 */
-.project-sections {
-  max-width: 900px;
-  margin: 0 auto;
+/* 인라인 링크 */
+.links-inline .info-value {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
 }
 
-.section-header {
-  font-size: 1.5rem;
+.inline-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  text-decoration: none;
+  padding: 4px 10px;
+  border-radius: 4px;
+  border: 1px solid #333;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+}
+
+.inline-link:hover {
+  border-color: #666;
+  transform: translateY(-2px);
+}
+
+.link-icon {
+  font-size: 1rem;
+}
+
+/* 컴팩트 섹션 헤더 */
+.section-header-compact {
+  font-family: 'Courier New', monospace;
+  font-size: 1.1rem;
   font-weight: bold;
-  margin-bottom: 25px;
-  padding-bottom: 15px;
-  border-bottom: 2px solid #333;
+  margin-bottom: 15px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #333;
 }
 
-/* 비디오 */
-.video-section {
-  margin-bottom: 50px;
+/* 개발 로그 - 컴팩트 */
+.logs-section-compact {
+  margin-bottom: 30px;
+}
+
+.logs-tree {
+  font-family: 'Courier New', monospace;
+}
+
+.log-item {
+  margin-bottom: 8px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.tree-branch {
+  font-size: 0.9rem;
+}
+
+.log-link {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  text-decoration: none;
+  padding: 8px 15px;
+  border-radius: 4px;
+  flex: 1;
+  transition: all 0.2s ease;
+  border: 1px solid #333;
+  font-size: 0.9rem;
+}
+
+.log-link:hover {
+  transform: translateX(8px);
+}
+
+.log-date {
+  font-size: 0.85rem;
+  min-width: 70px;
+}
+
+.log-title {
+  flex: 1;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+/* 비디오 - 컴팩트 */
+.video-section-compact {
+  margin-bottom: 30px;
 }
 
 .youtube-container {
@@ -249,8 +324,8 @@ layout: default
   padding-bottom: 56.25%;
   height: 0;
   overflow: hidden;
-  border-radius: 8px;
-  margin-bottom: 15px;
+  border-radius: 6px;
+  margin-bottom: 10px;
 }
 
 .youtube-container iframe {
@@ -262,106 +337,27 @@ layout: default
 }
 
 .video-desc {
-  font-size: 1rem;
-  line-height: 1.8;
-}
-
-/* 링크 */
-.links-section {
-  margin-bottom: 50px;
-}
-
-.links-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
-}
-
-.link-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 15px 25px;
-  border-radius: 8px;
-  text-decoration: none;
-  border: 2px solid #333;
-  transition: all 0.3s ease;
-  font-weight: 500;
-  font-size: 1.1rem;
-}
-
-.link-item:hover {
-  transform: translateY(-3px);
-  border-color: #666;
-}
-
-.link-icon {
-  font-size: 1.4rem;
-}
-
-/* 개발 로그 */
-.logs-section {
-  margin-bottom: 50px;
-}
-
-.logs-tree {
-  font-family: 'Courier New', monospace;
-}
-
-.log-item {
-  margin-bottom: 15px;
-  display: flex;
-  gap: 10px;
-  align-items: center;
-}
-
-.tree-branch {
-  font-size: 1rem;
-}
-
-.log-link {
-  display: flex;
-  gap: 20px;
-  align-items: center;
-  text-decoration: none;
-  padding: 12px 20px;
-  border-radius: 6px;
-  flex: 1;
-  transition: all 0.3s ease;
-  border: 1px solid #333;
-}
-
-.log-link:hover {
-  transform: translateX(10px);
-}
-
-.log-date {
-  font-size: 1rem;
-}
-
-.log-title {
-  flex: 1;
-  font-size: 1rem;
+  font-size: 0.9rem;
   line-height: 1.6;
 }
 
 /* 본문 콘텐츠 */
 .project-content {
-  margin-top: 60px;
-  padding-top: 40px;
-  border-top: 2px solid #333;
-  line-height: 1.8;
+  margin-top: 40px;
+  padding-top: 30px;
+  border-top: 1px solid #333;
+  line-height: 1.7;
 }
 
 /* 반응형 */
 @media (max-width: 767px) {
   .project-page {
-    padding: 20px;
+    padding: 15px;
   }
   
   .neofetch-layout {
     flex-direction: column;
-    gap: 30px;
+    gap: 20px;
   }
   
   .neofetch-left {
@@ -371,7 +367,7 @@ layout: default
   }
   
   .project-main-image {
-    max-width: 100%;
+    max-width: 200px;
   }
   
   .info-line {
@@ -383,13 +379,14 @@ layout: default
     min-width: auto;
   }
   
-  .links-grid {
-    grid-template-columns: 1fr;
+  .links-inline .info-value {
+    flex-direction: column;
+    gap: 8px;
   }
   
   .log-link {
     flex-direction: column;
-    gap: 8px;
+    gap: 5px;
     align-items: flex-start;
   }
 }
