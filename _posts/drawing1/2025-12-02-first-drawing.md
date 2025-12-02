@@ -6,7 +6,7 @@ categories: drawing1
 
 ---
 
-![](/Users/seong-gyuhyeon/Documents/GitHub/dmp100.github.io/assets/images/2025-12-02-17-42-41-image.png)
+![](/assets/images/2025-12-02-17-42-41-image.png)
 
 맨날 밥먹고 코딩관련 , 취업관련 어쩌구저쩌구만 보다가 취미삼아 그림을 조금씩 그리게 되었다.
 
