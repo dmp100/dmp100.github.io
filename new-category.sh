@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # 사용법: ./new-category.sh 카테고리명 "카테고리 제목" "설명"
+# 까먹지말고 config.yml에 추가, 카테고리명도 맞추고 로컬에서는 껏다켜야함
 
 if [ -z "$1" ]; then
   echo "사용법: ./new-category.sh 카테고리명 \"카테고리 제목\" \"설명\""
