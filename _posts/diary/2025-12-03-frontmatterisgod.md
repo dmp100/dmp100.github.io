@@ -2,7 +2,7 @@
 layout: post
 title: frontmatterIsGod
 date: 2025-12-03T09:50:56.524Z
-categories: dairy
+categories: diary
 ---
 
 
