@@ -5,5 +5,7 @@
     "pasteImage.prefix": "/",
     "pasteImage.defaultName": "Y-MM-DD-HH-mm-ss",
     "css.validate": false,
-    "scss.validate": false
+    "scss.validate": false,
+    "[markdown]": {
+    }
   }

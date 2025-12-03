@@ -7,6 +7,12 @@
       "previewPath": null,
       "fields": [
         {
+          "title": "Layout",
+          "name": "layout",
+          "type": "string",
+          "default": "post"
+        },
+        {
           "title": "Title",
           "name": "title",
           "type": "string"
@@ -24,24 +30,14 @@
           "isPublishDate": true
         },
         {
-          "title": "Content preview",
-          "name": "preview",
-          "type": "image"
-        },
-        {
-          "title": "Is in draft",
-          "name": "draft",
-          "type": "draft"
-        },
-        {
-          "title": "Tags",
-          "name": "tags",
-          "type": "tags"
-        },
-        {
           "title": "Categories",
           "name": "categories",
           "type": "categories"
+        },
+        {
+          "title": "Project",
+          "name": "project",
+          "type": "string"
         }
       ]
     }
@@ -49,6 +45,7 @@
   "frontMatter.framework.id": "jekyll",
   "frontMatter.content.publicFolder": "assets",
   "frontMatter.preview.host": "http://localhost:4000",
+  "frontMatter.preview.pathName": "/:categories/:year/:month/:day/:title:output_ext",
   "frontMatter.content.pageFolders": [
     {
       "title": "drafts",
