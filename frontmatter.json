@@ -48,17 +48,6 @@
   "frontMatter.preview.pathName": "/:categories/:year/:month/:day/:title:output_ext",
   "frontMatter.content.pageFolders": [
     {
-      "title": "drafts",
-      "path": "[[workspace]]/_drafts"
-    },
-    {
-      "title": "posts",
-      "path": "[[workspace]]/_posts"
-    },
-    {
-      "path": "[[workspace]]/pages"
-    },
-    {
       "path": "[[workspace]]/_posts/ideas"
     },
     {
@@ -68,7 +57,7 @@
       "path": "[[workspace]]/_posts/diary"
     },
     {
-      "path": "[[workspace]]/projects"
+      "path": "[[workspace]]/_posts/whatifeel"
     }
   ],
   "frontMatter.git.enabled": true
